@@ -9,10 +9,10 @@ var gSortBy
 var gPageIdx
 
 _createNotes()
-console.log('notes', notes)
+// console.log('notes', notes)
 
 export const noteService = {
-    query,
+    // query,
     get,
     remove,
     save,

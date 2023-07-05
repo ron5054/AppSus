@@ -66,7 +66,7 @@ export default {
             .then(notes => (this.notes = notes))
     },
     components: {
-        NoteFilter,
+        // NoteFilter,
         NoteList,
     },
 }
