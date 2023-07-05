@@ -1,8 +1,8 @@
 import { mailService } from '../services/mail.service.js'
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
+import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.service.js'
 
 // import mailFilter from '../cmps/mailFilter.js'
-// import mailList from '../cmps/mailList.js'
+import MailList from '../cmps/MailList.js'
 
 
 export default {
@@ -63,6 +63,6 @@ export default {
     },
     components: {
         // mailFilter,
-        // mailList,
+        MailList,
     }
 }

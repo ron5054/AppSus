@@ -1,4 +1,4 @@
-import mailPreview from './MailPreview.js'
+import MailPreview from './MailPreview.js'
 
 export default {
     props: ['mails'],
@@ -6,16 +6,16 @@ export default {
         <section class="mail-list">
             <ul>
                 <li v-for="mail in mails" :key="mail.id">
-                    <mailPreview :mail="mail"/>
+                    <MailPreview :mail="mail"/>
                     <section class="actions">
-                        <button @click="onRemovemail(mail.id)">x</button>
+                        <button @click="onRemoveMail(mail.id)">x</button>
                     </section>
                 </li>
             </ul>
         </section>
     `,
     methods: {
-        onRemovemail(mailId) {
+        onRemoveMail(mailId) {
             this.$emit('remove', mailId)
         },
         onShowDetails(mailId) {
