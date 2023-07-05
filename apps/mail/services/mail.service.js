@@ -36,7 +36,7 @@ function get(mailId) {
 
 
 function _setNextPrevMailId(mail) {
-    return storageService.query(mail_KEY)
+    return storageService.query(MAIL_KEY)
         .then(mails => {
             const mailIdx = mails.findIndex(currmail => currmail.id === mail.id)
             mail.nextmailId = mails[mailIdx + 1] ? mails[mailIdx + 1].id : mails[0].id
@@ -60,7 +60,7 @@ function save(mail) {
     }
 }
 
-function getEmptymail(title = '', price) {
+function getEmptymail() {
     return {
         id: '',
         subject: 'Miss you!3',
@@ -98,6 +98,7 @@ function _createmails() {
             subject: 'Miss you!',
             body: 'Would love to catch up sometimes',
             isRead: false,
+            isStarred: false,
             sentAt: 1551133930594,
             removedAt: null,
             from: 'momo@momo.com',
@@ -108,6 +109,7 @@ function _createmails() {
             subject: 'Miss you!2',
             body: 'Would love to catch up sometimes',
             isRead: false,
+            isStarred: false,
             sentAt: 1551133930598,
             removedAt: null,
             from: 'momo@momo.com',
@@ -118,6 +120,7 @@ function _createmails() {
             subject: 'Miss you!3',
             body: 'Would love to catch up sometimes',
             isRead: false,
+            isStarred: false,
             sentAt: 1551133930592,
             removedAt: null,
             from: 'momo@momo.com',
@@ -128,6 +131,7 @@ function _createmails() {
             subject: 'Miss you!7',
             body: 'Would love to catch up sometimes',
             isRead: false,
+            isStarred: false,
             sentAt: 1551133935592,
             removedAt: null,
             from: 'momo@momo.com',
@@ -138,6 +142,7 @@ function _createmails() {
             subject: 'Miss you!4',
             body: 'Would love to catch up sometimes',
             isRead: false,
+            isStarred: false,
             sentAt: 1551133930599,
             removedAt: null,
             from: 'ron5054@momo.com',

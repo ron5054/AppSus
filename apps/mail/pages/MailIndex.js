@@ -1,30 +1,35 @@
 import { mailService } from '../services/mail.service.js'
 import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.service.js'
 
-// import mailFilter from '../cmps/mailFilter.js'
+import MailFilter from '../cmps/MailFilter.js'
 import MailList from '../cmps/MailList.js'
+import ComposeMail from '../cmps/ComposeMail.js'
 
 
 export default {
+    name: 'MailIndex',
     template: `
         <section class="mail-index">
-            <RouterLink to="/mail/edit">Add mail</RouterLink> 
-            <!-- <mailFilter @filter="setFilterBy"/> -->
+            <RouterLink to="/mail/edit">Compose</RouterLink> 
+            <mailFilter @filter="setFilterBy"/>
             <mailList
                 v-if="mails"
                 :mails="filteredmails"
-                @remove="removemail" />
+                @star="starMail"
+                @remove="removeMail"
+                 />
         </section>
+        <ComposeMail />
     `,
     data() {
         return {
             mails: null,
-            selectedmail: null,
             filterBy: {},
         }
     },
     methods: {
-        removemail(mailId) {
+        removeMail(mailId) {
+            console.log('hi');
             mailService.remove(mailId)
                 .then(() => {
                     const idx = this.mails.findIndex(mail => mail.id === mailId)
@@ -36,8 +41,8 @@ export default {
                 })
 
         },
-        selectmail(mailId) {
-            this.selectedmail = this.mails.find(mail => mail.id === mailId)
+        starMail(mailId) {
+            console.log(mailId);
         },
         savemail(mailToSave) {
             mailService.save(mailToSave)
@@ -52,7 +57,7 @@ export default {
             let filteredmails = this.mails
             if (this.filterBy.txt) {
                 const regex = new RegExp(this.filterBy.txt, 'i')
-                filteredmails = filteredmails.filter(mail => regex.test(mail.title))
+                filteredmails = filteredmails.filter(mail => regex.test(mail.subject))
             }
             return filteredmails
         }
@@ -62,7 +67,8 @@ export default {
             .then(mails => this.mails = mails)
     },
     components: {
-        // mailFilter,
+        MailFilter,
         MailList,
+        ComposeMail
     }
 }
