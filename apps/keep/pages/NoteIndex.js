@@ -3,7 +3,7 @@ import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.servic
 
 import NoteAdd from './NoteAdd.js'
 
-// import NoteFilter from '../cmps/NoteFilter.js'
+import NoteFilter from '../cmps/NoteFilter.js'
 import NoteList from '../cmps/NoteList.js'
 
 export default {
@@ -98,7 +98,7 @@ export default {
             .then(notes => (this.notes = notes))
     },
     components: {
-        // NoteFilter,
+        NoteFilter,
         NoteList,
         NoteAdd,
     },

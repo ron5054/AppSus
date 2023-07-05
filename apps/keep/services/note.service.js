@@ -8,6 +8,40 @@ var gFilterBy
 var gSortBy
 var gPageIdx
 
+const notes = [
+    {
+        id: 'n101',
+        createdAt: 1112222,
+        type: 'NoteTxt',
+        isPinned: true,
+        style: { backgroundColor: '#00d' },
+        info: { txt: 'Fullstack Me Baby!' }
+    },
+    {
+        id: 'n102',
+        type: 'NoteImg',
+        isPinned: false,
+        info: {
+            url: 'http://some-img/me',
+            title: 'Bobi and Me'
+        },
+        style: { backgroundColor: '#00d' }
+    },
+    {
+        id: 'n103',
+        type: 'NoteTodos',
+        isPinned: false,
+        info: {
+            title: 'Get my stuff together',
+            todos: [
+                { txt: 'Driving license', doneAt: null },
+                { txt: 'Coding power', doneAt: 187111111 }
+            ]
+        }
+    }
+]
+
+
 _createNotes()
 
 export const noteService = {
@@ -17,8 +51,8 @@ export const noteService = {
     save,
     getEmptyNote,
     getNextNoteId,
-    // getFilterBy,
-    // setFilterBy,
+    setFilterBy,
+    getFilterBy,
 }
 
 function query() {
@@ -71,4 +105,14 @@ function _createNote(title) {
     note.id = utilService.makeId()
     note.content = utilService.makeLorem()
     return note
+}
+
+function getFilterBy() {
+    return { ...gFilterBy }
+}
+
+function setFilterBy(filterBy = {}) {
+    if (filterBy.title !== undefined) gFilterBy.title = filterBy.title
+    if (filterBy.type !== undefined) gFilterBy.type = filterBy.type
+    return gFilterBy
 }
