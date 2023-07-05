@@ -1,11 +1,12 @@
 import HomePage from './views/HomePage.js'
 import AboutUs from './views/AboutUs.js'
 
-import NoteIndex from './views/NoteIndex.js'
+import NoteIndex from './apps/keep/pages/NoteIndex.js'
+import NoteDetails from './apps/keep/pages/NoteDetails.js'
+import NoteEdit from './apps/keep/pages/NoteEdit.js'
 
 import MailIndex from './views/MailIndex.js'
-// import NoteDetails from './views/NoteDetails.js'
-// import NoteEdit from './views/NoteEdit.js'
+
 
 const { createRouter, createWebHashHistory } = VueRouter
 
@@ -21,21 +22,21 @@ const routerOptions = {
 			component: AboutUs,
 		},
 		{
-            path: '/note',
-            component: NoteIndex
-        },
-		{
 			path: '/mail',
 			component: MailIndex
 		},
-        // {
-        //     path: '/note/:noteId',
-        //     component: NoteDetails
-        // },
-        // {
-        //     path: '/note/edit/:noteId?',
-        //     component: NoteEdit
-        // }
+		{
+            path: '/note',
+            component: NoteIndex
+        },
+        {
+            path: '/note/:noteId',
+            component: NoteDetails
+        },
+        {
+            path: '/note/edit/:noteId?',
+            component: NoteEdit
+        }
 	],
 }
 
