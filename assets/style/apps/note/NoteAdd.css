@@ -1,0 +1,14 @@
+.note-add-section {
+    display: grid;
+    border: 1px solid black;
+    width: 400px;
+    margin: auto;
+
+    /* border-radius: 10px; */
+}
+
+.note-add-section input {
+    border: none;
+    outline: none;
+    font-size: 20px;
+}

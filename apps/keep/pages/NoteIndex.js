@@ -1,15 +1,16 @@
 import { noteService } from '../services/note.service.js'
 import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.service.js'
 
+import NoteAdd from './NoteAdd.js'
+
 // import NoteFilter from '../cmps/NoteFilter.js'
 import NoteList from '../cmps/NoteList.js'
 
 export default {
+    name: 'NoteIndex',
     template: `
         <section class="note-index">
-            <RouterLink to="/note/edit" class="add-note">Add Note</RouterLink>
-
-            <!-- <NoteFilter @filter="setFilterBy"/> -->
+            <NoteAdd @noteAdded="saveNote"></NoteAdd>
 
             <NoteList
                 v-if="notes"
@@ -30,6 +31,7 @@ export default {
                 .then(() => {
                     const idx = this.notes.findIndex(note => note.id === noteId)
                     this.notes.splice(idx, 1)
+
                     showSuccessMsg('Note removed')
                 })
                 .catch(err => {
@@ -62,5 +64,6 @@ export default {
     components: {
         // NoteFilter,
         NoteList,
+        NoteAdd,
     },
 }
