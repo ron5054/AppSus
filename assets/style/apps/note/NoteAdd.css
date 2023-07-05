@@ -2,9 +2,7 @@
     display: grid;
     border: 1px solid black;
     width: 400px;
-    margin: auto;
-
-    /* border-radius: 10px; */
+    margin: 20px auto;
 }
 
 .note-add-section input {

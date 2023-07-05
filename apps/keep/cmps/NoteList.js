@@ -5,10 +5,12 @@ export default {
     template: `
         <section class="note-list">
             <ul>
-                <li v-for="note in notes" :key="note.id">
+                <li v-for="note in notes" :key="note.id" class="note-card">
                     <NotePreview :note="note"/>
                     <section class="actions">
-                        <button @click="onRemoveNote(note.id)">x</button>
+                        <button @click="onRemoveNote(note.id)">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
                     </section>
                 </li>
             </ul>

@@ -9,14 +9,37 @@ import NoteList from '../cmps/NoteList.js'
 export default {
     name: 'NoteIndex',
     template: `
-        <section class="note-index">
-            <NoteAdd @noteAdded="saveNote"></NoteAdd>
 
-            <NoteList
-                v-if="notes"
-                :notes="filteredNotes"
-                @remove="removeNote" />
-        </section>
+
+        <div class="container">
+            <header class="main-header">
+                <img class="icon" src="../../assets/img/keep-icon.png"/>
+                <div class="logo">Keep</div>
+                <input type="text" placeholder="Search" />
+                <div >
+
+                </div>
+                <div></div>
+            </header>
+
+            <div class="navbar">
+                <NoteAdd @noteAdded="saveNote"></NoteAdd>
+            </div>
+            <nav class="aside-navbar">
+            <span class="material-symbols-outlined">lightbulb</span>
+            </nav>
+            <div class="main">
+                <section class="note-index">
+
+                    <NoteList
+                        v-if="notes"
+                        :notes="filteredNotes"
+                        @remove="removeNote" />
+
+                </section>
+            </div>
+        </div>
+
 
     `,
     data() {

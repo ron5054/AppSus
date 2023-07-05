@@ -1,4 +1,4 @@
 .note-list {
-    column-count: 4;
-    column-gap: 1rem;
+    column-width: 100px;
+    column-gap: 8rem;
 }

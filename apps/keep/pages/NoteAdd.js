@@ -7,24 +7,33 @@ export default {
             <section class=note-add-section>
                 <input v-model="noteToAdd.title" type="text" placeholder="Title">
                 <input v-model="noteToAdd.content" type="text" placeholder="Take a note...">
+                <!-- <button :disabled="!isValid">Save</button> -->
                 <button>Save</button>
             </section>
-            <hr />
         </form>
     `,
     data() {
         return {
-            noteToAdd: noteService.getEmptyNote(),
-            note: null,
+            noteToAdd: noteService.getEmptyNote()
         }
     },
     computed: {
         isValid() {
-            return this.bookToEdit.title.length > 0
-          },
+            return this.noteToAdd.title.length > 0
+        },
     },
     created() {
-
+        const { noteId } = this.$route.params
+        if (!noteId) return
+        noteService
+            .get(noteId)
+            .then((note) => {
+                this.noteToEdit = note
+            })
+            .catch((err) => {
+                showErrorMsg('Cannot load note for adding')
+                this.$router.push('/note')
+            })
     },
 
     methods: {
@@ -35,6 +44,7 @@ export default {
                     showSuccessMsg('Note saved')
                     this.$router.push('/note')
                     this.$emit('noteAdded', savedNote)
+
                 })
                 .catch(err => {
                     showErrorMsg('Cannot save note')

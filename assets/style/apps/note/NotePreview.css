@@ -1,0 +1,29 @@
+.note-card {
+    list-style-type: none;
+    /* background-color: #f9f9f9; */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    width: 200px;
+    break-inside: avoid;
+}
+
+.note-card h2 {
+    margin-block-start: 0;
+}
+
+.note-card span {
+    /* align-items: center;
+    justify-content: center; */
+}
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
