@@ -1,0 +1,19 @@
+.mail {
+    display: flex;
+    border-bottom: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 900;
+
+}
+
+.mail-list>ul>li:hover {
+    cursor: pointer;
+    border-bottom: 3px solid lightgray;
+    border-top: 3px solid lightgray;
+}
+
+.is-read {
+    font-weight: 400;
+}

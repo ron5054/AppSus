@@ -35,14 +35,14 @@ const routerOptions = {
 			path: '/note',
 			component: NoteIndex
 		},
-		{
-			path: '/note/:noteId',
-			component: NoteDetails
-		},
-		{
-			path: '/note/edit/:noteId?',
-			component: NoteEdit
-		}
+		// {
+		// 	path: '/note/:noteId',
+		// 	component: NoteDetails
+		// },
+		// {
+		// 	path: '/note/edit/:noteId?',
+		// 	component: NoteEdit
+		// }
 	],
 }
 
