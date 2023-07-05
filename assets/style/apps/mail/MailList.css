@@ -5,7 +5,13 @@
     justify-content: space-between;
     align-items: center;
     font-weight: 900;
+    width: 100vw;
 
+}
+
+.mail-list ul {
+    padding: 0;
+    margin: 0;
 }
 
 .mail-list>ul>li:hover {
@@ -16,4 +22,5 @@
 
 .is-read {
     font-weight: 400;
+    background-color: var(--clr6)
 }

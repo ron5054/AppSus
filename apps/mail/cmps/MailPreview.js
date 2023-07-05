@@ -6,11 +6,7 @@ export default {
             <article>
                 <span class="mail-sender"> {{ mail.from }} </span> <span> {{ mail.subject }} </span><span> {{ mail.body }} </span>
             </article>
-        </RouterLink> |
+        </RouterLink>
           
     `,
-
-    created() {
-        // console.log(this.mail);
-    },
-};
+}
