@@ -1,6 +1,7 @@
 export default {
     template: `
         <section class="mail-filter">
+        <!-- <span class="material-symbols-outlined">search</span> -->
             <input
                 v-model="filterBy.txt"
                 @input="onSetFilterBy"

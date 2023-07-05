@@ -12,7 +12,7 @@ export default {
     template: `
         <section class="mail-index">
             <header class="mail-header-container">
-                <button @click="toggleCompose" class="compose-btn">Compose</button>
+                <button @click="toggleCompose" class="compose-btn"><span class="material-symbols-outlined">edit</span>Compose</button>
                 <mailFilter @filter="setFilterBy"/> <span>unread:</span><span>{{ unreadCount }}</span>
             </header>
             
