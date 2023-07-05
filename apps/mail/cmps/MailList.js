@@ -8,10 +8,11 @@ export default {
             <ul>
                 <RouterLink @click="onIsRead(mail.id)" v-for="mail in mails" :key="mail.id" :to="'/mail/' + mail.id">
                     <li :class="{'mail': true, 'is-read': mail.isRead}">
+                        <input type="checkbox" />
                         <button @click.prevent="onStarMail(mail.id)">⭐</button>
                         <MailPreview :mail="mail"/>
+                        <button @click.prevent="onRemoveMail(mail.id)">x</button>
                         <section class="actions">
-                            <button @click.prevent="onRemoveMail(mail.id)">x</button>
                         </section>
                     </li>
                 </RouterLink>

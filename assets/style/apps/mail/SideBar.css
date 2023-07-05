@@ -1,0 +1,9 @@
+.inbox,
+.starred,
+.read,
+.trash {
+    color: blue;
+    border: 1px solid lightblue;
+    font-size: 2em;
+    width: 4em;
+}

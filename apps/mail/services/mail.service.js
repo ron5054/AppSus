@@ -127,17 +127,6 @@ function _createmails() {
             to: 'user@appsus.com'
         },
         {
-            id: 'fghgfh',
-            subject: 'Miss you!7',
-            body: 'Would love to catch up sometimes',
-            isRead: false,
-            isStarred: false,
-            sentAt: 1551133935592,
-            removedAt: null,
-            from: 'momo@momo.com',
-            to: 'user@appsus.com'
-        },
-        {
             id: 'cvbcvb',
             subject: 'Miss you!4',
             body: 'Would love to catch up sometimes',

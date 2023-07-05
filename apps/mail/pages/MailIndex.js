@@ -4,23 +4,29 @@ import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.servic
 import MailFilter from '../cmps/MailFilter.js'
 import MailList from '../cmps/MailList.js'
 import ComposeMail from '../cmps/ComposeMail.js'
+import SideBar from '../cmps/SideBar.js'
 
 
 export default {
     name: 'MailIndex',
     template: `
         <section class="mail-index">
-        
-            <mailFilter @filter="setFilterBy"/> <span>unread:</span><span>{{ unreadCount }}</span>
-            <mailList
-                v-if="mails"
-                :mails="filteredmails"
-                @star="starMail"
-                @remove="removeMail"
-                @read="markAsRead"
+            <header class="mail-header-container">
+                <button @click="toggleCompose" class="compose-btn">Compose</button>
+                <mailFilter @filter="setFilterBy"/> <span>unread:</span><span>{{ unreadCount }}</span>
+            </header>
+            
+            <section class="mail-main-container">
+                <SideBar />
+                <mailList
+                     v-if="mails"
+                     :mails="filteredmails"
+                     @star="starMail"
+                     @remove="removeMail"
+                     @read="markAsRead"
                  />
+            </section>
         </section>
-        <button @click="toggleCompose" class="compose-btn">Compose</button>
         <ComposeMail @send="sendMail" v-if="showCompose"/>
     `,
     data() {
@@ -99,6 +105,7 @@ export default {
     components: {
         MailFilter,
         MailList,
-        ComposeMail
+        ComposeMail,
+        SideBar
     }
 }
