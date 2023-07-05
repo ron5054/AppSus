@@ -1,6 +1,9 @@
 import HomePage from './views/HomePage.js'
 import AboutUs from './views/AboutUs.js'
-import MailIndex from './views/MailIndex.js'
+
+import NoteIndex from './views/NoteIndex.js'
+// import NoteDetails from './views/NoteDetails.js'
+// import NoteEdit from './views/NoteEdit.js'
 
 const { createRouter, createWebHashHistory } = VueRouter
 
@@ -16,24 +19,17 @@ const routerOptions = {
 			component: AboutUs,
 		},
 		{
-			path: '/mail',
-			component: MailIndex,
-		},
-
-		// {
-		//     path: '/note',
-		//     component: NoteIndex
-		// },
-		// {
-		//     path: '/note/:noteId',
-		//     component: NoteDetails
-		// },
-		// {
-		//     path: '/note/edit/:noteId?',
-		//     component: NoteEdit
-		// }
-
-
+            path: '/note',
+            component: NoteIndex
+        },
+        // {
+        //     path: '/note/:noteId',
+        //     component: NoteDetails
+        // },
+        // {
+        //     path: '/note/edit/:noteId?',
+        //     component: NoteEdit
+        // }
 	],
 }
 

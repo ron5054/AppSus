@@ -1,7 +1,7 @@
 import { noteService } from '../services/note.service.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 
-import NoteFilter from '../cmps/NoteFilter.js'
+// import NoteFilter from '../cmps/NoteFilter.js'
 import NoteList from '../cmps/NoteList.js'
 
 export default {
@@ -9,7 +9,8 @@ export default {
         <section class="note-index">
             <RouterLink to="/note/edit" class="add-note">Add Note</RouterLink>
 
-            <NoteFilter @filter="setFilterBy"/>
+            <!-- <NoteFilter @filter="setFilterBy"/> -->
+
             <NoteList
                 v-if="notes"
                 :books="filteredNotes"

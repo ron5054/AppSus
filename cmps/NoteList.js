@@ -15,7 +15,7 @@ export default {
         </section>
     `,
     methods: {
-        onRemoveCar(noteId) {
+        onRemoveNote(noteId) {
             this.$emit('remove', noteId)
         }
     },
