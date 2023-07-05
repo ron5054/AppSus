@@ -3,10 +3,14 @@ export default {
     props: ['mail'],
     template: `
         <article class="mail-preview">
-            <!-- <h2>{{ mail.title }}</h2>
-            <h3>\${{ mail.listPrice.amount }}</h3>
-            <RouterLink :to="'/mail/' + mail.id">Details</RouterLink> |
+            <h1>{{ mail.from }}</h1> <h2> {{ mail.subject }} </h2>
+            
+            <!-- <RouterLink :to="'/mail/' + mail.id">Details</RouterLink> |
             <RouterLink :to="'/mail/edit/' + mail.id">Edit</RouterLink> -->
         </article>
     `,
-}
+
+    created() {
+        // console.log(this.mail);
+    },
+};
