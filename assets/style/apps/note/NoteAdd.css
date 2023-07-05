@@ -10,3 +10,8 @@
     outline: none;
     font-size: 20px;
 }
+
+.keep-note-add-actions-bar {
+    opacity: 0;
+    transition: opacity 0.6s ease
+}

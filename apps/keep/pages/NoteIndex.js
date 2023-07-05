@@ -11,24 +11,30 @@ export default {
     template: `
 
 
-        <div class="container">
-            <header class="main-header">
-                <img class="icon" src="../../assets/img/keep-icon.png"/>
-                <div class="logo">Keep</div>
-                <input type="text" placeholder="Search" />
-                <div >
-
+        <div class="keep-container">
+            <header class="keep-main-header">
+                <div>
+                    <img class="header-icon" src="../../assets/img/keep-icon.png"/>
                 </div>
-                <div></div>
+
+                <div class="header-logo">Keep
+                    <input class="header-input" type="text" placeholder="Search" />
+                </div>
+
+                <div class="header-actions-bar"></div>
+
             </header>
 
-            <div class="navbar">
-                <NoteAdd @noteAdded="saveNote"></NoteAdd>
-            </div>
-            <nav class="aside-navbar">
-            <span class="material-symbols-outlined">lightbulb</span>
+            <section class="keep-addnote-section">
+                <NoteAdd @noteAdded="save"></NoteAdd>
+            </section>
+
+            <nav class="keep-aside-navbar">
+                <span class="material-symbols-outlined">emoji_objects</span>
+                <span class="material-symbols-outlined">notifications</span>
+                <span class="material-symbols-outlined">delete</span>
             </nav>
-            <div class="main">
+            <div class="keep-main">
                 <section class="note-index">
 
                     <NoteList
@@ -61,10 +67,17 @@ export default {
                     showErrorMsg('Cannot remove note')
                 })
         },
-
-        saveNote(noteToSave) {
-            noteService.save(noteToSave)
-                .then(savedNote => this.notes.push(savedNote))
+        save(noteToAdd) {
+            console.log(noteToAdd)
+            noteService.save(noteToAdd)
+                .then(savedNote => {
+                    console.log('Saved note', savedNote)
+                    showSuccessMsg('Note saved')
+                    this.notes.push(savedNote)
+                })
+                .catch(err => {
+                    showErrorMsg('Cannot save note')
+                })
         },
         setFilterBy(filterBy) {
             this.filterBy = filterBy

@@ -1,19 +1,23 @@
-.main-header {
+.keep-main-header {
     display: flex;
     align-items: center;
     padding: 1rem;
-    background-color: #fbbc05;
     color: #fff;
 }
 
-.header-title {
+.keep-main-header-title {
     font-size: 1.5rem;
     font-weight: bold;
     margin-left: 1rem;
 }
 
-.header-search {
-    margin-left: auto;
+.header-logo {
+    font-size: 20px;
+    color: #5f6368;
+}
+
+.header-input {
+    width: 800px;
 }
 
 .header-search input {
