@@ -4,15 +4,17 @@ export default {
     name: 'MailList',
     props: ['mails'],
     template: `
-        <section class="mail-list">
+       <section class="mail-list">
             <ul>
-                <li v-for="mail in mails" :key="mail.id">
-                    <MailPreview :mail="mail"/>
-                    <section class="actions">
-                        <button @click="onRemoveMail(mail.id)">x</button>
-                        <button @click="onStarMail(mail.id)">⭐</button>
-                    </section>
-                </li>
+                <RouterLink @click="onIsRead(mail.id)" v-for="mail in mails" :key="mail.id" :to="'/mail/' + mail.id">
+                    <li :class="{'mail': true, 'is-read': mail.isRead}">
+                        <button @click.prevent="onStarMail(mail.id)">⭐</button>
+                        <MailPreview :mail="mail"/>
+                        <section class="actions">
+                            <button @click.prevent="onRemoveMail(mail.id)">x</button>
+                        </section>
+                    </li>
+                </RouterLink>
             </ul>
         </section>
     `,
@@ -24,6 +26,9 @@ export default {
             console.log(mailId);
             this.$emit('star', mailId)
         },
+        onIsRead(mailId) {
+            this.$emit('read', mailId)
+        }
     },
     components: {
         MailPreview,

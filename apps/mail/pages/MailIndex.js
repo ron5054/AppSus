@@ -10,24 +10,31 @@ export default {
     name: 'MailIndex',
     template: `
         <section class="mail-index">
-            <RouterLink to="/mail/edit">Compose</RouterLink> 
-            <mailFilter @filter="setFilterBy"/>
+        
+            <mailFilter @filter="setFilterBy"/> <span>unread:</span><span>{{ unreadCount }}</span>
             <mailList
                 v-if="mails"
                 :mails="filteredmails"
                 @star="starMail"
                 @remove="removeMail"
+                @read="markAsRead"
                  />
         </section>
-        <ComposeMail />
+        <button @click="toggleCompose" class="compose-btn">Compose</button>
+        <ComposeMail @send="sendMail" v-if="showCompose"/>
     `,
     data() {
         return {
             mails: null,
             filterBy: {},
+            showCompose: false,
+            selectedMail: null
         }
     },
     methods: {
+        toggleCompose() {
+            this.showCompose = !this.showCompose
+        },
         removeMail(mailId) {
             console.log('hi');
             mailService.remove(mailId)
@@ -44,8 +51,25 @@ export default {
         starMail(mailId) {
             console.log(mailId);
         },
-        savemail(mailToSave) {
-            mailService.save(mailToSave)
+        markAsRead(mailId) {
+            this.selectedMail = this.mails.find(mail => mail.id === mailId)
+            this.selectedMail.isRead = true
+            console.log(this.selectedMail);
+            mailService.save(this.selectedMail)
+        },
+        sendMail(mailToSave) {
+            const mail = {
+                id: '',
+                subject: mailToSave.subject,
+                body: mailToSave.body,
+                isRead: false,
+                isStarred: false,
+                sentAt: Date.now(),
+                removedAt: null,
+                from: 'ron5054@gmail.com',
+                to: mailToSave.address
+            };
+            mailService.save(mail)
                 .then(savedmail => this.mails.push(savedmail))
         },
         setFilterBy(filterBy) {
@@ -60,6 +84,12 @@ export default {
                 filteredmails = filteredmails.filter(mail => regex.test(mail.subject))
             }
             return filteredmails
+        },
+        unreadCount() {
+            if (!this.mails) {
+                return 0;
+            }
+            return this.mails.filter(mail => !mail.isRead).length
         }
     },
     created() {
