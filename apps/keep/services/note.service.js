@@ -24,7 +24,7 @@ const gNotes = [
         type: 'NoteImg',
         isPinned: false,
         info: {
-            url: 'http://some-img/me',
+            url: 'https://picsum.photos/200/300',
             title: 'Bobi and Me'
         },
         style: { backgroundColor: '#00d' }

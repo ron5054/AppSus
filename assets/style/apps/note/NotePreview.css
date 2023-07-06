@@ -16,9 +16,6 @@
     margin-block-start: 0;
 }
 
-.note-card span {}
-
-
 .material-symbols-outlined {
     padding: 3px;
     cursor: pointer;
@@ -34,6 +31,7 @@
     transition: opacity 0.6s ease;
     display: flex;
     justify-content: space-around;
+    margin-block-start: 20px;
 }
 
 .note-card:hover .note-preview-actions-bar {

@@ -1,20 +1,31 @@
+import NoteTxt from "./NoteTxt.js"
+import NoteImg from "./NoteImg.js"
+import NoteTodos from "./NoteTodos.js"
+
+
 export default {
     props: ['note'],
     template: `
         <router-link :to="noteUrl">
+            <h2>{{ note.title }}</h2>
+
             <article class="note-preview">
-                <ul class="clean-list note-list">
-                    <li v-for="note in notes" :key="note.id" class="note-card">
-                        <component :is="cmp.type" :info="cmp.info" @changeInfo="updateNote" />
-                    </li>
-                </ul>
-
-                <h2>{{ note.title }}</h2>
-                <p>{{ note.content }}</p>
-                <section class=note-preview-actions-bar>
-
-                </section>
+                        <component
+                        :is="note.type"
+                        :info="note.info"
+                        />
             </article>
+            <section class="note-preview-actions-bar">
+                            <span class="material-symbols-outlined">push_pin</span>
+                            <span class="material-symbols-outlined" @click="onDuplicateNote(note)">content_copy</span>
+                            <span class="material-symbols-outlined">palette</span>
+                            <span class="material-symbols-outlined">image</span>
+                            <span class="material-symbols-outlined" @click="onRemoveNote(note.id)">delete</span>
+            </section>
+
+
+            <p>{{ note.content }}</p>
+
         </router-link>
     `,
     data() {
@@ -22,15 +33,13 @@ export default {
             noteUrl: `/note/${this.note.id}`,
         }
     },
+    components: {
+        NoteTxt,
+        NoteImg,
+        NoteTodos,
+    },
     created() {
     },
     computed: {
     },
 }
-
-/*
-<NoteTxt>
-<NoteImg>
-<NoteVideo>
-<NoteTodos>
-*/
