@@ -1,3 +1,8 @@
 .mail-main-container {
     display: flex;
 }
+
+.home-btn {
+    background-color: transparent;
+    border: none;
+}

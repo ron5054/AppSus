@@ -2,20 +2,51 @@ export default {
         name: 'SideBar',
         props: ['mails'],
         template: `
-                <section class="sidebar-container">
-            
-                        <section class="inbox folder" @click="onSetFilterBy('inbox')"><span class="material-symbols-outlined">inbox</span>Inbox <span>{{ unreadCount }}</span></section>
-                        <section class="starred folder" @click="onSetFilterBy('starred')"><span class="material-symbols-outlined">star</span>Starred</section>
-                        <section class="sent folder" @click="onSetFilterBy('sent')"><span class="material-symbols-outlined">send</span>Sent</section>
-                        <section class="trash folder" @click="onSetFilterBy('trash')"><span class="material-symbols-outlined">delete</span>Trash</section>
-
-                 </section>
-                 `,
+          <section class="sidebar-container">
+            <section
+              class="inbox folder"
+              :class="{ active: currentTab === 'inbox' }"
+              @click="onSetFilterBy('inbox')"
+            >
+              <span class="material-symbols-outlined">inbox</span>
+              <span>Inbox</span>
+              <span class="unread-count">{{ unreadCount }}</span>
+            </section>
+      
+            <section
+              class="starred folder"
+              :class="{ active: currentTab === 'starred' }"
+              @click="onSetFilterBy('starred')"
+            >
+              <span class="material-symbols-outlined">star</span>
+              <span>Starred</span>
+              <span></span>
+            </section>
+      
+            <section
+              class="sent folder"
+              :class="{ active: currentTab === 'sent' }"
+              @click="onSetFilterBy('sent')"
+            >
+              <span class="material-symbols-outlined">send</span>
+              <span>Sent</span>
+              <span></span>
+            </section>
+      
+            <section
+              class="trash folder"
+              :class="{ active: currentTab === 'trash' }"
+              @click="onSetFilterBy('trash')"
+            >
+              <span class="material-symbols-outlined">delete</span>
+              <span>Trash</span>
+              <span></span>
+            </section>
+          </section>
+        `,
         data() {
                 return {
-                        filterBy: {
-                                isStarred: true,
-                        }
+                        currentTab: ''
                 }
         },
         computed: {
@@ -24,13 +55,12 @@ export default {
                                 return 0
                         }
                         return this.mails.filter(mail => !mail.isRead).length
-                }
+                },
         },
         methods: {
                 onSetFilterBy(tab) {
-                        // this.$emit('filter', { ...this.filterBy })
+                        this.currentTab = tab
                         this.$router.push({ path: '/mail', query: { tab } })
-                }
-        }
-}
-
+                },
+        },
+};
