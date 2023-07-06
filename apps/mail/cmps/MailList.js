@@ -5,15 +5,17 @@ export default {
     props: ['mails'],
     template: `
        <section class="mail-list">
+       <input @click="onSelectAll" type="checkbox" name="selectall" v-model="selectAll" />
+       <span class="material-symbols-outlined delete">delete</span>
             <ul>
                 <RouterLink @click="onIsRead(mail.id)" v-for="mail in mails" :key="mail.id" :to="'/mail/' + mail.id">
                     <li :class="{'mail': true, 'is-read': mail.isRead}">
-                        <section>
-                            <input @click.stop type="checkbox" :value="mail.id">
+                        <section class="flex">
+                            <input @click.stop="onSelectMail(mail.id)" type="checkbox" v-model="mail.isSelected">
                             <span @click.prevent.stop="onStarMail(mail.id)" class="material-symbols-outlined"  :class="{'is-starred': mail.isStarred}">star</span>
                         </section>
                         <MailPreview :mail="mail"/>
-                        <button @click.prevent="onRemoveMail(mail.id)">x</button>
+                        <span @click.prevent="onRemoveMail(mail.id)" class="material-symbols-outlined delete">delete</span>
                         <section class="actions">
                         </section>
                     </li>
@@ -23,7 +25,7 @@ export default {
     `,
     data() {
         return {
-            isSelected: false
+            selectAll: null
         }
     },
     methods: {
@@ -39,8 +41,13 @@ export default {
         },
         onSelectMail(mailId) {
             console.log(mailId);
+        },
+        onSelectAll() {
+            console.log(this.selectAll);
+            //     this.mails.forEach(mail => {
+            //         mail.isSelected = this.selectAll;
+            // })
         }
-
     },
     computed: {
         showSentTime() {
