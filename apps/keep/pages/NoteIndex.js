@@ -46,6 +46,7 @@ export default {
             </div>
         </div>
 
+        <RouterView />
 
     `,
     data() {

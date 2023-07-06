@@ -3,8 +3,8 @@ import NotePreview from './NotePreview.js'
 export default {
     props: ['notes'],
     template: `
-        <section class="note-list">
-            <ul>
+        <section>
+            <ul class="clean-list note-list">
                 <li v-for="note in notes" :key="note.id" class="note-card">
                     <NotePreview :note="note"/>
                     <section class="actions">

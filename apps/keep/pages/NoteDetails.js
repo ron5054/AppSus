@@ -3,7 +3,8 @@ import { noteService } from '../services/note.service.js'
 export default {
     template: `
     <section v-if="note" class="note-details">
-        <h2>{{ note.header }}</h2>
+        <h2>{{ note.title }}</h2>
+        <p>{{ note.content }}</p>
     </section>
     `,
 

@@ -33,7 +33,13 @@ const routerOptions = {
 		},
 		{
 			path: '/note',
-			component: NoteIndex
+			component: NoteIndex,
+			children: [
+				{
+					path: ':noteId',
+					component: NoteDetails,
+				}
+			]
 		},
 		// {
 		// 	path: '/note/:noteId',
