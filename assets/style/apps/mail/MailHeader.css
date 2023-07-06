@@ -17,8 +17,8 @@
     background-color: var(--clr7);
     font-weight: 500;
     width: 142px;
-    transition: 0.2s;
-
+    height: 56px;
+    transition: box-shadow .08s linear, min-width .15s cubic-bezier(0.4, 0, 0.2, 1)
 }
 
 .mail-header-container .compose-btn:hover {

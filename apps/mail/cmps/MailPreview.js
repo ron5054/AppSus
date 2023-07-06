@@ -2,11 +2,25 @@ export default {
     name: 'MailPreview',
     props: ['mail'],
     template: `
-        <RouterLink class="mail-preview" :to="'/mail/' + mail.id">
             <article>
-                <span class="mail-sender"> {{ mail.from }} </span> <span> {{ mail.subject }} </span><span> {{ mail.body }} </span>
-            </article>
-        </RouterLink>
-          
+                <span class="mail-sender"> {{ mail.from }} </span>
+                <span> {{ mail.subject }} </span>
+                <span> {{ mail.body }} </span>
+                <span> {{ formattedDate }}</span>
+            </article>   
     `,
+    computed: {
+        formattedDate() {
+            const date = new Date(this.mail.sentAt)
+            const day = date.getDate()
+            const monthIndex = date.getMonth()
+            const monthNames = [
+                'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+            ]
+            const month = monthNames[monthIndex]
+
+            return `${day} ${month}`
+        }
+    }
 }

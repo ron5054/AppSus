@@ -8,8 +8,10 @@ export default {
             <ul>
                 <RouterLink @click="onIsRead(mail.id)" v-for="mail in mails" :key="mail.id" :to="'/mail/' + mail.id">
                     <li :class="{'mail': true, 'is-read': mail.isRead}">
-                        <input type="checkbox" />
-                        <button @click.prevent="onStarMail(mail.id)">⭐</button>
+                        <section>
+                            <input @click.stop type="checkbox" :value="mail.id">
+                            <span @click.prevent.stop="onStarMail(mail.id)" class="material-symbols-outlined"  :class="{'is-starred': mail.isStarred}">star</span>
+                        </section>
                         <MailPreview :mail="mail"/>
                         <button @click.prevent="onRemoveMail(mail.id)">x</button>
                         <section class="actions">
@@ -19,6 +21,11 @@ export default {
             </ul>
         </section>
     `,
+    data() {
+        return {
+            isSelected: false
+        }
+    },
     methods: {
         onRemoveMail(mailId) {
             this.$emit('remove', mailId)
@@ -29,6 +36,15 @@ export default {
         },
         onIsRead(mailId) {
             this.$emit('read', mailId)
+        },
+        onSelectMail(mailId) {
+            console.log(mailId);
+        }
+
+    },
+    computed: {
+        showSentTime() {
+            console.log(mail);
         }
     },
     components: {

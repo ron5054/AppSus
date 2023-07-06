@@ -14,13 +14,33 @@
     margin: 0;
 }
 
-.mail-list>ul>li:hover {
+.mail:hover {
     cursor: pointer;
     border-bottom: 3px solid lightgray;
     border-top: 3px solid lightgray;
+    transition: 0.5;
+}
+
+.mail:hover .material-symbols-outlined {
+    color: black;
 }
 
 .is-read {
     font-weight: 400;
     background-color: var(--clr6)
+}
+
+.mail-list .material-symbols-outlined:hover {
+    transform: scale(120%);
+    transition: 0.5;
+
+}
+
+.mail-list .material-symbols-outlined {
+    color: lightgray;
+}
+
+.mail-list .material-symbols-outlined.is-starred {
+    color: gold;
+    /* Gold color when starred */
 }
