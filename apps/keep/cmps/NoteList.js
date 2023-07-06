@@ -5,6 +5,7 @@ import NotePreview from './NotePreview.js'
 
 export default {
     props: ['notes'],
+    emits: ['duplicate', 'remove'],
     template: `
         <section>
             <ul class="clean-list note-list">
@@ -31,7 +32,9 @@ export default {
             this.$emit('remove', noteId)
         },
         onDuplicateNote(note) {
-            this.$emit('duplicate', note)
+            let noteCopy = JSON.parse(JSON.stringify(note))
+            delete noteCopy.id
+            this.$emit('duplicate', noteCopy)
         }
     },
     components: {

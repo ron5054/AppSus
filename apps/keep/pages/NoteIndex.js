@@ -36,17 +36,17 @@ export default {
                 <span class="material-symbols-outlined">delete</span>
             </nav>
             <div class="keep-main">
-                <section class="note-index">
 
-                    <NoteList
-                        v-if="notes"
-                        :notes="filteredNotes"
-                        @remove="removeNote"
-                        @duplicate="duplicateNote"
-                         />
+                <NoteList
+                    v-if="notes"
+                    :notes="filteredNotes"
+                    @remove="removeNote"
+                    @duplicate="save"
+                />
 
-                </section>
             </div>
+
+
         </div>
 
         <RouterView />
@@ -56,7 +56,6 @@ export default {
         return {
             notes: [],
             filterBy: {},
-            // duplicatedNote: {}
         }
     },
     methods: {
@@ -85,20 +84,8 @@ export default {
                 })
         },
         duplicateNote(note) {
-            let duplicatedNote = JSON.parse(JSON.stringify(note))
-            duplicatedNote.id = utilService.makeId()
-
-            this.notes.push(duplicatedNote)
-            console.log('notes', this.notes)
-
-            noteService.save(duplicatedNote)
-                .then(() => {
-                    showSuccessMsg('Note duplicated')
-                })
-                .catch(() => {
-                    showErrorMsg('Failed to duplicate note')
-                })
-            // duplicatedNote = {}
+            delete note.id
+            this.save(note)
         },
         setFilterBy(filterBy) {
             this.filterBy = filterBy

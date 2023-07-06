@@ -3,21 +3,26 @@
     align-items: center;
     padding: 1rem;
     color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.11);
+    justify-content: space-evenly;
 }
 
 .keep-main-header-title {
     font-size: 1.5rem;
     font-weight: bold;
     margin-left: 1rem;
+
 }
 
 .header-logo {
+    /* font-family: 'Roboto'; */
     font-size: 20px;
     color: #5f6368;
 }
 
 .header-input {
     width: 800px;
+    border-radius: 8px;
 }
 
 .header-search input {

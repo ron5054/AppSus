@@ -2,9 +2,7 @@ import HomePage from './views/HomePage.js'
 import AboutUs from './views/AboutUs.js'
 
 import NoteIndex from './apps/keep/pages/NoteIndex.js'
-import NoteDetails from './apps/keep/pages/NoteDetails.js'
-// import NoteEdit from './apps/keep/pages/NoteEdit.js'
-// import NoteAdd from './apps/keep/pages/NoteAdd.js'
+import NoteEdit from './apps/keep/pages/NoteEdit.js'
 
 import MailIndex from './apps/mail/pages/MailIndex.js'
 import MailDetails from './apps/mail/cmps/MailDetails.js'
@@ -37,18 +35,10 @@ const routerOptions = {
 			children: [
 				{
 					path: ':noteId',
-					component: NoteDetails,
+					component: NoteEdit,
 				}
 			]
 		},
-		// {
-		// 	path: '/note/:noteId',
-		// 	component: NoteDetails
-		// },
-		// {
-		// 	path: '/note/edit/:noteId?',
-		// 	component: NoteEdit
-		// }
 	],
 }
 

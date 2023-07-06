@@ -10,9 +10,12 @@ export default {
 
                     <section class="note-add-actions-bar">
                             <span class="material-symbols-outlined">push_pin</span>
+
                             <span class="material-symbols-outlined">palette</span>
-                            <span class="material-symbols-outlined">image</span>
-                            <!-- <span class="material-symbols-outlined" @click="onRemoveNote(note.id)">delete</span> -->
+
+                            <!-- <input type="file" ref="fileInput" style="display: none" @change="ImgUpload"> -->
+                            <span class="material-symbols-outlined" @click="">image</span>
+
                             <div @click="save()">
                                 <span class="material-symbols-outlined">save</span>
                             </div>

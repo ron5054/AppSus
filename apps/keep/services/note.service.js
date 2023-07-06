@@ -8,9 +8,10 @@ var gFilterBy
 var gSortBy
 var gPageIdx
 
-const notes = [
+const gNotes = [
     {
         id: 'n101',
+        title: 'note1',
         createdAt: 1112222,
         type: 'NoteTxt',
         isPinned: true,
@@ -19,6 +20,7 @@ const notes = [
     },
     {
         id: 'n102',
+        title: 'note2',
         type: 'NoteImg',
         isPinned: false,
         info: {
@@ -29,6 +31,7 @@ const notes = [
     },
     {
         id: 'n103',
+        title: 'note3',
         type: 'NoteTodos',
         isPinned: false,
         info: {
@@ -40,6 +43,18 @@ const notes = [
         }
     }
 ]
+
+
+// export const
+
+
+// function getDynamicCmps() {
+//     return Promise.relosve(DynamicCmps)
+// }
+
+// const DynamicCmps = {
+
+// }
 
 
 _createNotes()
@@ -90,11 +105,13 @@ function getNextNoteId(noteId) {
 function _createNotes() {
     let notes = utilService.loadFromStorage(NOTE_KEY)
     if (!notes || !notes.length) {
-        notes = []
-        notes.push(_createNote('Meet with Matt'))
-        notes.push(_createNote('Feed the cat'))
-        notes.push(_createNote('Buy a hat'))
-        notes.push(_createNote('Get a tat'))
+        // notes = []
+        // notes.push(_createNote('Meet with Matt'))
+        // notes.push(_createNote('Feed the cat'))
+        // notes.push(_createNote('Buy a hat'))
+        // notes.push(_createNote('Get a tat'))
+
+        notes = gNotes
         utilService.saveToStorage(NOTE_KEY, notes)
     }
 }
