@@ -13,11 +13,11 @@ export default {
         <section class="mail-index">
             <header class="mail-header-container">
                 <button @click="toggleCompose" class="compose-btn"><span class="material-symbols-outlined">edit</span>Compose</button>
-                <mailFilter @filter="setFilterBy"/> <span>unread:</span><span>{{ unreadCount }}</span>
+                <mailFilter @filter="setFilterBy"/>
             </header>
             
             <section class="mail-main-container">
-                <SideBar />
+                <SideBar :mails="mails" />
                 <mailList
                      v-if="mails"
                      :mails="filteredmails"
@@ -42,7 +42,6 @@ export default {
             this.showCompose = !this.showCompose
         },
         removeMail(mailId) {
-            console.log('hi');
             mailService.remove(mailId)
                 .then(() => {
                     const idx = this.mails.findIndex(mail => mail.id === mailId)
@@ -55,7 +54,10 @@ export default {
 
         },
         starMail(mailId) {
-            console.log(mailId);
+            this.selectedMail = this.mails.find(mail => mail.id === mailId)
+            this.selectedMail.isStarred = !this.selectedMail.isStarred
+            console.log(this.selectedMail)
+            mailService.save(this.selectedMail)
         },
         markAsRead(mailId) {
             this.selectedMail = this.mails.find(mail => mail.id === mailId)
@@ -70,6 +72,7 @@ export default {
                 body: mailToSave.body,
                 isRead: false,
                 isStarred: false,
+                isSent: true,
                 sentAt: Date.now(),
                 removedAt: null,
                 from: 'ron5054@gmail.com',
@@ -77,6 +80,9 @@ export default {
             };
             mailService.save(mail)
                 .then(savedmail => this.mails.push(savedmail))
+                .catch(err => alert('Message not sent'))
+            this.showCompose = false
+            showSuccessMsg('mail sent')
         },
         setFilterBy(filterBy) {
             this.filterBy = filterBy
@@ -91,12 +97,12 @@ export default {
             }
             return filteredmails
         },
-        unreadCount() {
-            if (!this.mails) {
-                return 0;
-            }
-            return this.mails.filter(mail => !mail.isRead).length
-        }
+        // unreadCount() {
+        //     if (!this.mails) {
+        //         return 0;
+        //     }
+        //     return this.mails.filter(mail => !mail.isRead).length
+        // }
     },
     created() {
         mailService.query()
