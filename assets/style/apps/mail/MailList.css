@@ -16,7 +16,6 @@
 .mail:hover {
     cursor: pointer;
     border-bottom: 3px solid lightgray;
-    border-top: 3px solid lightgray;
     transition: 0.5;
 }
 

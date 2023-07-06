@@ -1,7 +1,7 @@
 .folder {
     display: flex;
     color: rgb(35, 35, 35);
-    font-size: 1.5em;
+    font-size: 1.3em;
     width: 7em;
     padding-left: 1em;
     cursor: pointer;

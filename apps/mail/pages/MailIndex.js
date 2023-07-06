@@ -22,7 +22,7 @@ export default {
                      v-if="mails"
                      :mails="filteredmails"
                      @star="starMail"
-                     @remove="removeMail"
+                     @remove="trashMail"
                      @read="markAsRead"
                  />
             </section>
@@ -42,6 +42,8 @@ export default {
         toggleCompose() {
             this.showCompose = !this.showCompose
         },
+
+
         removeMail(mailId) {
             mailService.remove(mailId)
                 .then(() => {
@@ -54,18 +56,18 @@ export default {
                 .catch(err => showErrorMsg('Cannot remove mail'))
 
         },
-        // trashMail(mailId) {
-        //     this.selectedMail = this.mails.find(mail => mail.id === mailId)
-        //     if (this.selectedMail.isTrash) {
-        //         this.removeMail(mailId)
-        //     } else {
-        //         this.selectedMail.isTrash = true
-        //         this.selectedMail.isInbox = false
-        //         mailService.save(this.selectedMail)
-        //             .then(showSuccessMsg('mail moved to trash'))
-        //             .catch(err => showErrorMsg('Cannot move to trash'))
-        //     }
-        // },
+        trashMail(mailId) {
+            this.selectedMail = this.mails.find(mail => mail.id === mailId)
+            if (this.selectedMail.isTrash) {
+                this.removeMail(mailId)
+            } else {
+                this.selectedMail.isTrash = true
+                this.selectedMail.isInbox = false
+                mailService.save(this.selectedMail)
+                    .then(showSuccessMsg('mail moved to trash'))
+                    .catch(err => showErrorMsg('Cannot move to trash'))
+            }
+        },
         starMail(mailId) {
             this.selectedMail = this.mails.find(mail => mail.id === mailId)
             this.selectedMail.isStarred = !this.selectedMail.isStarred
@@ -82,7 +84,7 @@ export default {
                 subject: mailToSend.subject,
                 body: mailToSend.body,
                 isInbox: false,
-                isRead: false,
+                isRead: true,
                 isStarred: false,
                 isSent: true,
                 sentAt: Date.now(),
