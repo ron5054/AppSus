@@ -5,13 +5,14 @@ export default {
     props: ['mails'],
     template: `
        <section class="mail-list">
-       <input @click="onSelectAll" type="checkbox" name="selectall" v-model="selectAll" />
+       <input type="checkbox" name="selectall" v-model="selectAll" />
+       <pre>{{selectAll}}</pre>
        <span class="material-symbols-outlined delete">delete</span>
             <ul>
                 <RouterLink @click="onIsRead(mail.id)" v-for="mail in mails" :key="mail.id" :to="'/mail/' + mail.id">
                     <li :class="{'mail': true, 'is-read': mail.isRead}">
                         <section class="flex">
-                            <input @click.stop="onSelectMail(mail.id)" type="checkbox" v-model="mail.isSelected">
+                            <input @click.stop="onSelectMail(mail)" type="checkbox" v-model="mail.isSelected">
                             <span @click.prevent.stop="onStarMail(mail.id)" class="material-symbols-outlined"  :class="{'is-starred': mail.isStarred}">star</span>
                         </section>
                         <MailPreview :mail="mail"/>
@@ -33,14 +34,13 @@ export default {
             this.$emit('remove', mailId)
         },
         onStarMail(mailId) {
-            console.log(mailId);
             this.$emit('star', mailId)
         },
         onIsRead(mailId) {
             this.$emit('read', mailId)
         },
-        onSelectMail(mailId) {
-            console.log(mailId);
+        onSelectMail(mail) {
+            console.log(mail);
         },
         onSelectAll() {
             console.log(this.selectAll);
