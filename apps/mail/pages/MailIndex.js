@@ -14,6 +14,7 @@ export default {
             <header class="mail-header-container">
                 <button @click="toggleCompose" class="compose-btn"><span class="material-symbols-outlined">edit</span>Compose</button>
                 <mailFilter @filter="setFilterBy"/>
+                <a class="home-btn material-symbols-outlined" href="/">home</a>
             </header>
             
             <section class="mail-main-container">
@@ -27,7 +28,7 @@ export default {
                  />
             </section>
         </section>
-        <ComposeMail @send="sendMail" v-if="showCompose"/>
+        <ComposeMail @send="sendMail" @close="showCompose = false" v-if="showCompose"/>
     `,
     data() {
         return {

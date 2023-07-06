@@ -1,8 +1,42 @@
-.compose-mail {
-    display: flex;
-    flex-direction: column;
-    max-width: 30em;
+.new-mail {
+    width: 38em;
+    height: 42em;
     position: fixed;
-    bottom: 15px;
+    bottom: -5px;
     right: 15px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}
+
+.compose-mail-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.compose-mail-header h1 {
+    margin: 0;
+    padding-left: 12px;
+    align-self: center;
+}
+
+.compose-mail input {
+    border: none;
+    border-bottom: 1px solid lightgray;
+    width: 600px;
+}
+
+.mail-txt {
+    width: 600px;
+    height: 450px;
+    border: none;
+}
+
+.close-btn {
+    border: none;
+    background-color: transparent
+}
+
+.send-btn {
+    display: flex;
+    justify-content: end;
 }

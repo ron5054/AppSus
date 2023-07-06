@@ -1,13 +1,25 @@
 .folder {
     display: flex;
-    color: rgb(35, 35, 35);
-    font-size: 1.3em;
-    width: 7em;
-    padding-left: 1em;
+    align-items: center;
     cursor: pointer;
-
+    width: 9em;
+    font-size: 1.3em;
+    justify-content: space-between;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 .folder:hover {
     background-color: #ccc;
+    border-radius: 10px;
+}
+
+
+.sidebar-container {
+    background-color: var(--clr6);
+}
+
+.sidebar-container .folder.active {
+    background-color: var(--clr7);
+    border-radius: 10px;
 }

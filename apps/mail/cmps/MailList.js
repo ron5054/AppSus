@@ -5,9 +5,8 @@ export default {
     props: ['mails'],
     template: `
        <section class="mail-list">
-       <input type="checkbox" name="selectall" v-model="selectAll" />
-       <pre>{{selectAll}}</pre>
-       <span class="material-symbols-outlined delete">delete</span>
+       <!-- <input type="checkbox" name="selectall" v-model="selectAll" />
+       <span class="material-symbols-outlined delete">delete</span> -->
             <ul>
                 <RouterLink @click="onIsRead(mail.id)" v-for="mail in mails" :key="mail.id" :to="'/mail/' + mail.id">
                     <li :class="{'mail': true, 'is-read': mail.isRead}">
