@@ -22,7 +22,7 @@ const routerOptions = {
 			component: AboutUs,
 		},
 		{
-			path: '/mail',
+			path: '/mail/',
 			component: MailIndex
 		},
 		{
