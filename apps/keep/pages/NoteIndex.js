@@ -14,6 +14,9 @@ export default {
 
         <div class="keep-container">
             <header class="keep-main-header">
+
+                <!-- <div class="Home-btn" @click="goToHomePage">Home</div> -->
+                <span class="Home-btn material-symbols-outlined" @click="goToHomePage">home</span>
                 <div>
                     <img class="header-icon" src="../../assets/img/keep-icon.png"/>
                 </div>
@@ -36,14 +39,12 @@ export default {
                 <span class="material-symbols-outlined">delete</span>
             </nav>
             <div class="keep-main">
-
                 <NoteList
                     v-if="notes"
                     :notes="filteredNotes"
                     @remove="removeNote"
                     @duplicate="save"
                 />
-
             </div>
 
 
@@ -71,6 +72,9 @@ export default {
                     showErrorMsg('Cannot remove note')
                 })
         },
+        goToHomePage() {
+            this.$router.push('/')
+        },
         save(noteToAdd) {
             console.log(noteToAdd)
             noteService.save(noteToAdd)
@@ -95,8 +99,9 @@ export default {
         filteredNotes() {
             let filteredNotes = this.notes
             const regex = new RegExp(this.filterBy.title, 'i')
-            filteredNotes = filteredNotes.filter(note => regex.test(note.title))
-
+            if (this.filterBy.title) {
+                filteredNotes = filteredNotes.filter(note => 'title' in note.info && regex.test(note.info.title))
+            }
             return filteredNotes
         },
     },

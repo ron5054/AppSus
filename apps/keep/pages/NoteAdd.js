@@ -5,8 +5,8 @@ export default {
     template: `
         <section class="note-add-section">
             <form @submit.prevent="save" class="note-add-form">
-                    <input v-model="noteToAdd.title" type="text" placeholder="Title">
-                    <input v-model="noteToAdd.content" type="text" placeholder="Take a note...">
+                    <input v-model="noteToAdd.info.title" type="text" placeholder="Title">
+                    <input v-model="noteToAdd.info.txt" type="text" placeholder="Take a note...">
 
                     <section class="note-add-actions-bar">
                             <span class="material-symbols-outlined">push_pin</span>
@@ -20,8 +20,6 @@ export default {
                                 <span class="material-symbols-outlined">save</span>
                             </div>
                     </section>
-
-                    <!-- <button :disabled="!isValid">Save</button> -->
             </form>
         </section>
     `,
@@ -35,24 +33,11 @@ export default {
             return this.noteToAdd.title.length > 0
         },
     },
-    created() {
-        const { noteId } = this.$route.params
-        if (!noteId) return
-        noteService
-            .get(noteId)
-            .then((note) => {
-                this.noteToEdit = note
-            })
-            .catch((err) => {
-                showErrorMsg('Cannot load note for adding')
-                this.$router.push('/note')
-            })
-    },
 
     methods: {
         save() {
             this.$emit('noteAdded', { ...this.noteToAdd })
-            this.noteToAdd = {}
+            this.noteToAdd = noteService.getEmptyNote()
         }
     }
 }

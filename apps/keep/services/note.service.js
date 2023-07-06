@@ -11,7 +11,6 @@ var gPageIdx
 const gNotes = [
     {
         id: 'n101',
-        title: 'note1',
         createdAt: 1112222,
         type: 'NoteTxt',
         isPinned: true,
@@ -20,7 +19,6 @@ const gNotes = [
     },
     {
         id: 'n102',
-        title: 'note2',
         type: 'NoteImg',
         isPinned: false,
         info: {
@@ -31,7 +29,6 @@ const gNotes = [
     },
     {
         id: 'n103',
-        title: 'note3',
         type: 'NoteTodos',
         isPinned: false,
         info: {
@@ -43,19 +40,6 @@ const gNotes = [
         }
     }
 ]
-
-
-// export const
-
-
-// function getDynamicCmps() {
-//     return Promise.relosve(DynamicCmps)
-// }
-
-// const DynamicCmps = {
-
-// }
-
 
 _createNotes()
 
@@ -90,8 +74,14 @@ function save(note) {
     }
 }
 
-function getEmptyNote(title) {
-    return { id: '', title: title, content: '' }
+function getEmptyNote() {
+    return {
+        id: '',
+        info: {},
+        isPinned: false,
+        style: {},
+        type: 'NoteTxt'
+    }
 }
 
 function getNextNoteId(noteId) {
@@ -116,10 +106,10 @@ function _createNotes() {
     }
 }
 
-function _createNote(title) {
-    const note = getEmptyNote(title)
+function _createNote() {
+    const note = getEmptyNote()
     note.id = utilService.makeId()
-    note.content = utilService.makeLorem()
+    note.info.txt = utilService.makeLorem()
     return note
 }
 

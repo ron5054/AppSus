@@ -22,3 +22,9 @@
 .keep-main {
     grid-area: 3 / 1 / 4 / 2;
 }
+
+.Home-btn {
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    color: #5f6368;
+}

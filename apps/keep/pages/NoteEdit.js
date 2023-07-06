@@ -1,15 +1,13 @@
 import { noteService } from "../services/note.service.js"
 import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.service.js'
 
+import NotePreview from '../cmps/NotePreview.js'
+
 
 export default {
     props: ['note'],
     template: `
-            <!-- <h2>{{ note.title }}</h2>
-            <p>{{ note.content }}</p>
-            <section class=note-preview-actions-bar>
 
-            </section> -->
     `,
     data() {
         return {
@@ -40,5 +38,8 @@ export default {
                     showErrorMsg('Cannot save note')
                 })
         }
+    },
+    components: {
+        NotePreview
     }
 }

@@ -2,6 +2,19 @@ body {
     text-align: center;
 }
 
-.gmail-big-logo {
-    margin-inline-end: 30px;
+.home-page {
+    margin-block-start: 200px;
+    align-items: center;
+    justify-content: center;
 }
+
+.home-page img {
+    /* max-width: 300px; */
+    max-height: 300px;
+}
+
+.gmail-big-logo {
+    margin-inline-end: 100px;
+}
+
+.keep-big-log {}
