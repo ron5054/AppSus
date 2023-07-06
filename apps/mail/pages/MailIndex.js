@@ -17,7 +17,7 @@ export default {
             </header>
             
             <section class="mail-main-container">
-                <SideBar :mails="mails" />
+                <SideBar @filter="setFilterBy" :mails="mails" />
                 <mailList
                      v-if="mails"
                      :mails="filteredmails"
@@ -34,9 +34,10 @@ export default {
             mails: null,
             filterBy: {},
             showCompose: false,
-            // selectedMail: null
+            selectedMail: null
         }
     },
+
     methods: {
         toggleCompose() {
             this.showCompose = !this.showCompose
@@ -45,38 +46,49 @@ export default {
             mailService.remove(mailId)
                 .then(() => {
                     const idx = this.mails.findIndex(mail => mail.id === mailId)
+                    console.log(this.mails);
                     this.mails.splice(idx, 1)
+                    console.log(this.mails);
                     showSuccessMsg('mail removed')
                 })
-                .catch(err => {
-                    showErrorMsg('Cannot remove mail')
-                })
+                .catch(err => showErrorMsg('Cannot remove mail'))
 
         },
+        // trashMail(mailId) {
+        //     this.selectedMail = this.mails.find(mail => mail.id === mailId)
+        //     if (this.selectedMail.isTrash) {
+        //         this.removeMail(mailId)
+        //     } else {
+        //         this.selectedMail.isTrash = true
+        //         this.selectedMail.isInbox = false
+        //         mailService.save(this.selectedMail)
+        //             .then(showSuccessMsg('mail moved to trash'))
+        //             .catch(err => showErrorMsg('Cannot move to trash'))
+        //     }
+        // },
         starMail(mailId) {
             this.selectedMail = this.mails.find(mail => mail.id === mailId)
             this.selectedMail.isStarred = !this.selectedMail.isStarred
-            console.log(this.selectedMail)
             mailService.save(this.selectedMail)
         },
         markAsRead(mailId) {
             this.selectedMail = this.mails.find(mail => mail.id === mailId)
             this.selectedMail.isRead = true
-            console.log(this.selectedMail);
             mailService.save(this.selectedMail)
         },
-        sendMail(mailToSave) {
+        sendMail(mailToSend) {
             const mail = {
                 id: '',
-                subject: mailToSave.subject,
-                body: mailToSave.body,
+                subject: mailToSend.subject,
+                body: mailToSend.body,
+                isInbox: false,
                 isRead: false,
                 isStarred: false,
                 isSent: true,
                 sentAt: Date.now(),
-                removedAt: null,
+                isTrash: false,
                 from: 'ron5054@gmail.com',
-                to: mailToSave.address
+                to: mailToSend.address
             };
             mailService.save(mail)
                 .then(savedmail => this.mails.push(savedmail))
@@ -97,10 +109,27 @@ export default {
                     return regex.test(mail.subject) || regex.test(mail.body)
                 })
             }
+            if (this.filterBy.tab === 'inbox')
+                filteredmails = filteredmails.filter(mail => mail.isInbox)
+            if (this.filterBy.tab === 'starred')
+                filteredmails = filteredmails.filter(mail => mail.isStarred)
+            if (this.filterBy.tab === 'sent')
+                filteredmails = filteredmails.filter(mail => mail.isSent)
+            if (this.filterBy.tab === 'trash')
+                filteredmails = filteredmails.filter(mail => mail.isTrash)
             return filteredmails
         },
     },
-
+    watch: {
+        $route: {
+            deep: true,
+            immediate: true,
+            handler: function (val, oldVal) {
+                const { tab } = val.query
+                if (tab) this.filterBy.tab = tab
+            }
+        },
+    },
 
 
     created() {

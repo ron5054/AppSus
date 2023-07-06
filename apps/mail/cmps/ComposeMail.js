@@ -1,7 +1,7 @@
 export default {
     template: `
         <form @submit.prevent="onSendMail" class="compose-mail">
-            <h1>New Message</h1>
+            <h1>New Message</h1> <button>X</button>
             <label for="to"></label>
             <input v-model="address" type="email" id="to" placeholder="to" required/>
             <label for="subject"></label>

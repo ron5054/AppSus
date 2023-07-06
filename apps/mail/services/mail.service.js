@@ -52,7 +52,6 @@ function remove(mailId) {
 }
 
 function save(mail) {
-    console.log(mail.id);
     if (mail.id) {
         return storageService.put(MAIL_KEY, mail)
     } else {
@@ -97,11 +96,12 @@ function _createmails() {
             id: 'fghfghfgh',
             subject: 'Miss you!',
             body: 'Would love to catch up sometimes',
+            isInbox: true,
             isRead: false,
             isStarred: false,
             isSent: false,
             sentAt: 1688594419,
-            removedAt: null,
+            isTrash: false,
             from: 'momo@momo.com',
             to: 'user@appsus.com'
         },
@@ -109,11 +109,12 @@ function _createmails() {
             id: 'gfhfghgf',
             subject: 'Miss you!2',
             body: 'Would love to catch up sometimes',
+            isInbox: true,
             isRead: false,
             isStarred: false,
             isSent: false,
             sentAt: 1688594423,
-            removedAt: null,
+            isTrash: false,
             from: 'momo@momo.com',
             to: 'user@appsus.com'
         },
@@ -121,11 +122,12 @@ function _createmails() {
             id: 'fghgfh',
             subject: 'Miss you!3',
             body: 'Would love to catch up sometimes',
+            isInbox: true,
             isRead: false,
             isStarred: false,
             isSent: false,
             sentAt: 1551133930592,
-            removedAt: null,
+            isTrash: false,
             from: 'momo@momo.com',
             to: 'user@appsus.com'
         },
@@ -133,11 +135,12 @@ function _createmails() {
             id: 'cvbcvb',
             subject: 'Miss you!4',
             body: 'Would love to catch up sometimes',
+            isInbox: true,
             isRead: false,
             isStarred: false,
             isSent: false,
             sentAt: 1551133930599,
-            removedAt: null,
+            isTrash: false,
             from: 'ron5054@momo.com',
             to: 'user@appsus.com'
         }]
