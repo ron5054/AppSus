@@ -3,16 +3,24 @@ import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.servic
 
 export default {
     template: `
-        <div>
+        <section class="note-add-section">
             <form @submit.prevent="save" class="note-add-form">
-                <section class=note-add-section>
                     <input v-model="noteToAdd.title" type="text" placeholder="Title">
                     <input v-model="noteToAdd.content" type="text" placeholder="Take a note...">
+
+                    <section class="note-add-actions-bar">
+                            <span class="material-symbols-outlined">push_pin</span>
+                            <span class="material-symbols-outlined">palette</span>
+                            <span class="material-symbols-outlined">image</span>
+                            <!-- <span class="material-symbols-outlined" @click="onRemoveNote(note.id)">delete</span> -->
+                            <div @click="save()">
+                                <span class="material-symbols-outlined">save</span>
+                            </div>
+                    </section>
+
                     <!-- <button :disabled="!isValid">Save</button> -->
-                    <button>Save</button>
-                </section>
             </form>
-        </div>
+        </section>
     `,
     data() {
         return {

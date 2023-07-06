@@ -1,5 +1,6 @@
 import { noteService } from '../services/note.service.js'
 import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.service.js'
+import { utilService } from '../../../services/util.service.js'
 
 import NoteAdd from './NoteAdd.js'
 
@@ -17,9 +18,9 @@ export default {
                     <img class="header-icon" src="../../assets/img/keep-icon.png"/>
                 </div>
 
-                <div class="header-logo">Keep
-                    <input class="header-input" type="text" placeholder="Search" />
-                </div>
+                <div class="header-logo">Keep</div>
+
+                <NoteFilter @filter="setFilterBy" />
 
                 <div class="header-actions-bar"></div>
 
@@ -40,7 +41,9 @@ export default {
                     <NoteList
                         v-if="notes"
                         :notes="filteredNotes"
-                        @remove="removeNote" />
+                        @remove="removeNote"
+                        @duplicate="duplicateNote"
+                         />
 
                 </section>
             </div>
@@ -53,6 +56,7 @@ export default {
         return {
             notes: [],
             filterBy: {},
+            // duplicatedNote: {}
         }
     },
     methods: {
@@ -80,6 +84,22 @@ export default {
                     showErrorMsg('Cannot save note')
                 })
         },
+        duplicateNote(note) {
+            let duplicatedNote = JSON.parse(JSON.stringify(note))
+            duplicatedNote.id = utilService.makeId()
+
+            this.notes.push(duplicatedNote)
+            console.log('notes', this.notes)
+
+            noteService.save(duplicatedNote)
+                .then(() => {
+                    showSuccessMsg('Note duplicated')
+                })
+                .catch(() => {
+                    showErrorMsg('Failed to duplicate note')
+                })
+            // duplicatedNote = {}
+        },
         setFilterBy(filterBy) {
             this.filterBy = filterBy
         },
@@ -87,7 +107,7 @@ export default {
     computed: {
         filteredNotes() {
             let filteredNotes = this.notes
-            const regex = new RegExp(this.filterBy.txt, 'i')
+            const regex = new RegExp(this.filterBy.title, 'i')
             filteredNotes = filteredNotes.filter(note => regex.test(note.title))
 
             return filteredNotes

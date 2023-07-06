@@ -28,3 +28,14 @@
         'GRAD' 0,
         'opsz' 48
 }
+
+.note-preview-actions-bar {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    display: flex;
+    justify-content: space-around;
+}
+
+.note-card:hover .note-preview-actions-bar {
+    opacity: 1;
+}

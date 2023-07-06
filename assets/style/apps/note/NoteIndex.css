@@ -3,7 +3,7 @@
     grid-template-columns: 90% 10%;
     grid-template-columns: 0.9fr 0.1fr;
     grid-template-rows: 0.4fr 0.2fr 3.7fr;
-    gap: 80px 40px;
+    gap: 30px 40px;
     grid-auto-flow: row;
 }
 

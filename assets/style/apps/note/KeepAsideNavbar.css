@@ -1,1 +1,4 @@
-.keep-aside-navbar {}
+.keep-aside-navbar {
+    display: flex;
+    flex-direction: column;
+}

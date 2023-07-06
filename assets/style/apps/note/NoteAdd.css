@@ -1,17 +1,26 @@
 .note-add-section {
     display: grid;
     border: 1px solid black;
-    width: 400px;
+    max-width: 700px;
     margin: 20px auto;
+}
+
+.note-add-section {
+    border-radius: 10px;
 }
 
 .note-add-section input {
     border: none;
     outline: none;
     font-size: 20px;
+    border-radius: 10px;
 }
 
-.keep-note-add-actions-bar {
-    opacity: 0;
-    transition: opacity 0.6s ease
+.note-add-form {
+    display: grid;
+}
+
+.note-add-actions-bar {
+    display: flex;
+    justify-content: space-around;
 }

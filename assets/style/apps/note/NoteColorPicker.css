@@ -1,0 +1,11 @@
+.color-picker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.color-picker>div {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
