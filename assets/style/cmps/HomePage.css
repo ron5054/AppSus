@@ -1,11 +1,6 @@
-/* body {
-    text-align: center;
-} */
-
 .home-page {
     margin-block-start: 200px;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
 }
 
 .home-page img {
