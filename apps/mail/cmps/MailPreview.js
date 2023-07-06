@@ -2,11 +2,15 @@ export default {
     name: 'MailPreview',
     props: ['mail'],
     template: `
-            <article>
-                <span class="mail-sender"> {{ mail.from }} </span>
-                <span> {{ mail.subject }} </span>
-                <span> {{ mail.body }} </span>
-                <span> {{ formattedDate }}</span>
+            <article class="mail-preview-container">
+                <section class="mail-sender">
+                    <span> {{ mail.from }} </span>
+                </section>
+                <section class="mail-subject">
+                    <span> {{ mail.subject }} </span>
+                </section>
+                <section class="mail-body"> {{ mail.body }} </section>
+                    <section> {{ formattedDate }} </section>
             </article>   
     `,
     computed: {

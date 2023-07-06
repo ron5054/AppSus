@@ -1,9 +1,13 @@
-.inbox,
-.starred,
-.read,
-.trash {
-    color: blue;
-    border: 1px solid lightblue;
-    font-size: 2em;
-    width: 4em;
+.folder {
+    display: flex;
+    color: rgb(35, 35, 35);
+    font-size: 1.5em;
+    width: 7em;
+    padding-left: 1em;
+    cursor: pointer;
+
+}
+
+.folder:hover {
+    background-color: #ccc;
 }

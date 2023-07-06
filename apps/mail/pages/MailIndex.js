@@ -34,7 +34,7 @@ export default {
             mails: null,
             filterBy: {},
             showCompose: false,
-            selectedMail: null
+            // selectedMail: null
         }
     },
     methods: {
@@ -93,17 +93,16 @@ export default {
             let filteredmails = this.mails
             if (this.filterBy.txt) {
                 const regex = new RegExp(this.filterBy.txt, 'i')
-                filteredmails = filteredmails.filter(mail => regex.test(mail.subject))
+                filteredmails = filteredmails.filter(mail => {
+                    return regex.test(mail.subject) || regex.test(mail.body)
+                })
             }
             return filteredmails
         },
-        // unreadCount() {
-        //     if (!this.mails) {
-        //         return 0;
-        //     }
-        //     return this.mails.filter(mail => !mail.isRead).length
-        // }
     },
+
+
+
     created() {
         mailService.query()
             .then(mails => this.mails = mails)

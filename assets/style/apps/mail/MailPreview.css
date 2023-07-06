@@ -1,14 +1,16 @@
-/* .mail-preview {
+.mail-preview-container {
     display: flex;
     align-items: center;
 }
 
-.mail-preview span {
-    font-size: 1em;
-    font-weight: 900;
-    margin-inline-start: 10px;
+.mail-sender {
+    width: 15em;
 }
 
-.mail-preview span:last-child {
-    font-weight: 400;
-} */
+.mail-subject {
+    min-width: 15em;
+}
+
+.mail-body {
+    width: 50em;
+}

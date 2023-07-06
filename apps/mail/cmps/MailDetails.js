@@ -8,12 +8,7 @@ export default {
             <h2> {{ mail.subject }} </h2>
             <p> {{ mail.from }} </p>
             <p> {{ mail.body }} </p>
-      
-            <RouterLink :to="'/mail/' + mail.prevMailId">Prev mail</RouterLink> |
-            <RouterLink :to="'/mail/' + mail.nextMailId">Next mail</RouterLink> |
-            
             <RouterLink to="/mail">Back to List</RouterLink>
-            
         </section>
     `,
     data() {

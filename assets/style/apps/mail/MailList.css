@@ -2,7 +2,6 @@
     display: flex;
     border-bottom: 1px solid lightgray;
     border-top: 1px solid lightgray;
-    justify-content: space-between;
     align-items: center;
     font-weight: 900;
     width: 100vw;
