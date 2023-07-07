@@ -53,7 +53,6 @@ export default {
         },
         onToggleColorPalette() {
             this.isColorPaletteVisible = !this.isColorPaletteVisible
-            console.log(this.isColorPaletteVisible)
         },
         onChangeColor(note, color) {
             this.isColorPaletteVisible = false
@@ -64,6 +63,7 @@ export default {
         },
         OntogglePin(note) {
             note.isPinned = !note.isPinned
+            this.$emit('pin', note)
         },
     },
     computed: {

@@ -44,6 +44,7 @@ export default {
                     @remove="removeNote"
                     @duplicate="save"
                     @changeColor="changeNoteColor"
+                    @pin="pinNote"
                 />
             </div>
 
@@ -92,9 +93,7 @@ export default {
             this.save(note)
         },
         pinNote(note) {
-            this.notes.sort((a, b) => {
-
-            })
+            noteService.save(note)
         },
         goToHomePage() {
             this.$router.push('/')
@@ -117,7 +116,7 @@ export default {
     },
     computed: {
         sortedNotes() {
-            return this.notes.slice().sort((a, b) => {
+            return this.notes.sort((a, b) => {
                 if (a.isPinned && !b.isPinned) return -1
                 if (!a.isPinned && b.isPinned) return 1
                 return 0
@@ -136,7 +135,6 @@ export default {
         },
 
     },
-
     created() {
         noteService.query()
             .then(notes => (this.notes = notes))
