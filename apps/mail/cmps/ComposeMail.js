@@ -12,10 +12,10 @@ export default {
                 </section>
                 <section>
                 <label for="subject"></label>
-                <input v-model="subject" type="text" id="subject" placeholder="Subject" required/>
+                <input v-model="subject" type="text" id="subject" placeholder="Subject"/>
                 </section>
                 <section>
-                <textarea class="mail-txt" v-model="body"  placeholder="  write here"></textarea>
+                <textarea class="mail-txt" v-model="body" placeholder="Write here"></textarea>
                 </section>
                 <section class="send-btn">
                 <button type="submit">Send</button>

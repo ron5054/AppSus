@@ -11,24 +11,27 @@ export default {
     name: 'MailIndex',
     template: `
         <section class="mail-index">
-            <header class="mail-header-container">
-                <button @click="toggleCompose" class="compose-btn"><span class="material-symbols-outlined">edit</span>Compose</button>
-                <mailFilter @filter="setFilterBy"/>
-                <a class="home-btn material-symbols-outlined" href="/">home</a>
-            </header>
-            
             <section class="mail-main-container">
-                <SideBar @filter="setFilterBy" :mails="mails" />
-                <mailList
+                <section class="cb-sb">
+                    <img class="logo" src="../../assets/img/gmail-logo.png" alt="" />
+                    <button @click="toggleCompose" class="compose-btn"><span class="material-symbols-outlined">edit</span>Compose</button>
+                    <SideBar @filter="setFilterBy" :mails="mails" />
+                </section>
+
+                <section>
+                    <mailFilter @filter="setFilterBy"/>
+                    <a class="home-btn material-symbols-outlined" href="/">home</a>
+                    <mailList
                      v-if="mails"
                      :mails="filteredmails"
                      @star="starMail"
                      @remove="trashMail"
-                     @read="markAsRead"
-                 />
+                     />
+                </section>
+                <ComposeMail @send="sendMail" @close="showCompose = false" v-if="showCompose"/>
+                    
             </section>
         </section>
-        <ComposeMail @send="sendMail" @close="showCompose = false" v-if="showCompose"/>
     `,
     data() {
         return {
@@ -47,37 +50,34 @@ export default {
 
         removeMail(mailId) {
             mailService.remove(mailId)
-                .then(() => {
+                .then((res) => {
+                    console.log(res);
                     const idx = this.mails.findIndex(mail => mail.id === mailId)
                     console.log(this.mails);
                     this.mails.splice(idx, 1)
                     console.log(this.mails);
-                    showSuccessMsg('mail removed')
+                    showSuccessMsg('mail deleted')
                 })
                 .catch(err => showErrorMsg('Cannot remove mail'))
 
         },
         trashMail(mailId) {
-            this.selectedMail = this.mails.find(mail => mail.id === mailId)
-            if (this.selectedMail.isTrash) {
-                this.removeMail(mailId)
+            const mail = this.mails.find(mail => mail.id === mailId)
+            if (mail.isTrash) {
+                if (confirm('Are you sure you want to remove this mail?'))
+                    this.removeMail(mailId)
             } else {
-                this.selectedMail.isTrash = true
-                this.selectedMail.isInbox = false
-                mailService.save(this.selectedMail)
+                mail.isTrash = true
+                mail.isInbox = false
+                mailService.save({ ...mail })
                     .then(showSuccessMsg('mail moved to trash'))
                     .catch(err => showErrorMsg('Cannot move to trash'))
             }
         },
         starMail(mailId) {
-            this.selectedMail = this.mails.find(mail => mail.id === mailId)
-            this.selectedMail.isStarred = !this.selectedMail.isStarred
-            mailService.save(this.selectedMail)
-        },
-        markAsRead(mailId) {
-            this.selectedMail = this.mails.find(mail => mail.id === mailId)
-            this.selectedMail.isRead = true
-            mailService.save(this.selectedMail)
+            const mail = this.mails.find(mail => mail.id === mailId)
+            mail.isStarred = !mail.isStarred
+            mailService.save({ ...mail })
         },
         sendMail(mailToSend) {
             const mail = {
@@ -92,7 +92,7 @@ export default {
                 isTrash: false,
                 from: 'ron5054@gmail.com',
                 to: mailToSend.address
-            };
+            }
             mailService.save(mail)
                 .then(savedmail => this.mails.push(savedmail))
                 .catch(err => alert('Message not sent'))
@@ -106,10 +106,11 @@ export default {
     computed: {
         filteredmails() {
             let filteredmails = this.mails
+            filteredmails.sort((a, b) => b.sentAt - a.sentAt)
             if (this.filterBy.txt) {
                 const regex = new RegExp(this.filterBy.txt, 'i')
                 filteredmails = filteredmails.filter(mail => {
-                    return regex.test(mail.subject) || regex.test(mail.body)
+                    return regex.test(mail.subject) || regex.test(mail.body) || regex.test(mail.from)
                 })
             }
             if (this.filterBy.tab === 'inbox')
@@ -133,8 +134,6 @@ export default {
             }
         },
     },
-
-
     created() {
         mailService.query()
             .then(mails => this.mails = mails)

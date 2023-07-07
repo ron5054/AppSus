@@ -1,8 +1,46 @@
+.mail-index {
+    height: 100dvh;
+    font-family: roboto;
+    font-size: 0.875em;
+}
+
 .mail-main-container {
     display: flex;
+    height: 100dvh;
+    width: 100dvw;
+}
+
+.cb-sb {
+    background-color: var(--clr6);
+}
+
+.cb-sb .logo {
+    margin-inline-start: 4.6em;
+    margin-block-start: 0.875em;
 }
 
 .home-btn {
     background-color: transparent;
     border: none;
+}
+
+.mail-main-container .compose-btn {
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    margin-inline-start: 0.6em;
+    margin-block-start: 1.1em;
+    padding: 1em;
+    align-items: center;
+    border: none;
+    border-radius: 16px;
+    background-color: var(--clr7);
+    font-weight: 400;
+    width: 142px;
+    height: 56px;
+    transition: box-shadow .08s linear, min-width .15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mail-main-container .compose-btn:hover {
+    box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.302), 0 4px 8px 3px rgba(60, 64, 67, 0.149);
 }

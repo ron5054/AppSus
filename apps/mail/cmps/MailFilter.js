@@ -2,11 +2,16 @@ export default {
     name: "MailFilter",
     template: `
         <section class="mail-filter">
-            <input
-                v-model="filterBy.txt"
-                @input="onSetFilterBy"
-                type="text"
-                placeholder="🔍 Search mail">
+            <label for="search">
+                <span class="material-symbols-outlined">search</span>
+                <input
+                    id="search"
+                    v-model="filterBy.txt"
+                    @input="onSetFilterBy"
+                    type="text"
+                    placeholder="Search mail">
+                <span class="material-symbols-outlined search-clear" @click="onClearFilter"> close </span>
+            </label>
         </section>
     `,
     data() {
@@ -19,7 +24,11 @@ export default {
     methods: {
         onSetFilterBy() {
             this.$emit('filter', this.filterBy)
+        },
+        onClearFilter() {
+            this.filterBy.txt = ''
         }
     }
+
 }
 

@@ -14,12 +14,10 @@ export default {
     data() {
         return {
             mail: null,
-
         }
     },
     created() {
         this.loadMail()
-
     },
     methods: {
         loadMail() {
@@ -28,6 +26,7 @@ export default {
             mailService.get(mailId)
                 .then(mail => {
                     this.mail = mail
+                    this.markAsRead(this.mail)
                 })
                 .catch(err => {
                     console.log(err);
@@ -35,5 +34,9 @@ export default {
                     this.$router.push('/mail')
                 })
         },
+        markAsRead(mail) {
+            mail.isRead = true
+            mailService.save(mail)
+        }
     },
 }

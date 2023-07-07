@@ -15,7 +15,7 @@
 @import 'cmps/AppHeader.css';
 
 /* Apps */
-@import 'apps/mail/MailHeader.css';
+@import 'apps/mail/MailFilter.css';
 @import 'apps/mail/MailIndex.css';
 @import 'apps/mail/MailList.css';
 @import 'apps/mail/MailDetails.css';

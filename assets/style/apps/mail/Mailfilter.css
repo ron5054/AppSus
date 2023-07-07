@@ -1,0 +1,25 @@
+.mail-filter input {
+    font-size: 1.2em;
+    border: none;
+    width: 720px;
+    height: 48px;
+    outline: none;
+    background-color: var(--clr9);
+}
+
+.mail-filter label {
+    margin-block-start: 8px;
+    display: flex;
+    width: 720px;
+    height: 48px;
+    background-color: var(--clr9);
+    align-items: center;
+    padding-inline: 5px;
+    border: 1px solid transparent;
+    border-radius: 30px;
+}
+
+.mail-filter .material-symbols-outlined {
+    padding: 5px;
+    font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 48;
+}
