@@ -1,11 +1,12 @@
 .note-card {
     list-style-type: none;
-    /* background-color: #f9f9f9; */
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     break-inside: avoid;
+    text-align: center;
+    font-family: 'Roboto';
 }
 
 .note-card:hover {
@@ -14,9 +15,14 @@
 
 .note-card h2 {
     margin-block-start: 0;
+    text-align: center;
 }
 
-.material-symbols-outlined {
+.note-card li {
+    text-align: start;
+}
+
+.note-card .material-symbols-outlined {
     padding: 3px;
     cursor: pointer;
     font-variation-settings:
@@ -36,4 +42,22 @@
 
 .note-card:hover .note-preview-actions-bar {
     opacity: 1;
+}
+
+.color-palette {
+    display: flex;
+    position: absolute;
+}
+
+.color-circle {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 4px;
+    cursor: pointer;
+}
+
+.color-circle:hover {
+    border: 3px solid black;
 }

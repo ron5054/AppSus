@@ -1,4 +1,5 @@
 .keep-aside-navbar {
     display: flex;
     flex-direction: column;
+    margin-inline-start: 5px;
 }

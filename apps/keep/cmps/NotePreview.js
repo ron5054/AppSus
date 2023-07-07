@@ -9,7 +9,7 @@ export default {
         <router-link :to="noteUrl">
             <!-- <h2>{{ note.title }}</h2> -->
 
-            <article class="note-preview">
+            <article class="note-preview" :style="noteStyle">
                 <component
                 :is="note.type"
                 :info="note.info"
@@ -23,6 +23,7 @@ export default {
     data() {
         return {
             noteUrl: `/note/${this.note.id}`,
+            noteStyle: ''
         }
     },
     components: {

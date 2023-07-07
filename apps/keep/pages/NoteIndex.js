@@ -1,6 +1,5 @@
 import { noteService } from '../services/note.service.js'
 import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.service.js'
-import { utilService } from '../../../services/util.service.js'
 
 import NoteAdd from './NoteAdd.js'
 
@@ -44,6 +43,7 @@ export default {
                     :notes="filteredNotes"
                     @remove="removeNote"
                     @duplicate="save"
+                    @changeColor="changeNoteColor"
                 />
             </div>
 
@@ -57,6 +57,7 @@ export default {
         return {
             notes: [],
             filterBy: {},
+            selectedColor: '',
         }
     },
     methods: {
@@ -72,6 +73,24 @@ export default {
                     showErrorMsg('Cannot remove note')
                 })
         },
+        changeNoteColor(note, color) {
+            console.log('note', note)
+            console.log('color', color)
+            console.log('note.style', note.style)
+            note.style.backgroundColor = color
+
+            noteService.save(note)
+                .then(() => {
+                    showSuccessMsg('Note color changed')
+                })
+                .catch(err => {
+                    showErrorMsg('Failed to change note color')
+                })
+        },
+        duplicateNote(note) {
+            delete note.id
+            this.save(note)
+        },
         goToHomePage() {
             this.$router.push('/')
         },
@@ -86,10 +105,6 @@ export default {
                 .catch(err => {
                     showErrorMsg('Cannot save note')
                 })
-        },
-        duplicateNote(note) {
-            delete note.id
-            this.save(note)
         },
         setFilterBy(filterBy) {
             this.filterBy = filterBy
