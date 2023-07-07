@@ -6,14 +6,10 @@
   --clr5: rgb(0, 0, 0);
   --clr6: rgb(242, 246, 252);
   --clr7: rgb(194, 231, 255);
+  --clr8: rgb(211, 227, 253);
+  --clr9: rgb(234, 241, 251);
 
   --secondary-clr1: rgb(88, 201, 58);
   --secondary-clr2: rgb(122, 7, 70);
 
 }
-
-/*
-@font-face {
-  font-family: 'Roboto';
-  src: url('assets/fonts/Roboto-Regular.ttf');
-} */

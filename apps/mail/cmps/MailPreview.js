@@ -2,16 +2,22 @@ export default {
     name: 'MailPreview',
     props: ['mail'],
     template: `
-            <article class="mail-preview-container">
+        <article class="mail-preview-container">
+            <section class="mail-attr">
                 <section class="mail-sender">
                     <span> {{ mail.from }} </span>
                 </section>
                 <section class="mail-subject">
                     <span> {{ mail.subject }} </span>
+                    <span> - </span>
                 </section>
-                <section class="mail-body"> {{ mail.body }} </section>
-                    <section> {{ formattedDate }} </section>
-            </article>   
+                    <section class="mail-body"> {{ mail.body }} </section>
+            </section>
+
+            <section>
+                    <section class="date"> {{ formattedDate }} </section>
+            </section>        
+        </article>   
     `,
     computed: {
         formattedDate() {
@@ -24,7 +30,7 @@ export default {
             ]
             const month = monthNames[monthIndex]
 
-            return `${day} ${month}`
+            return `${month} ${day} `
         }
     }
 }

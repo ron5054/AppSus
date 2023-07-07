@@ -1,25 +1,45 @@
+.sidebar-container {
+    margin-block-start: 2em;
+    width: 256px;
+    min-height: 100%;
+    font-family: roboto;
+    color: rgb(32, 33, 36);
+    font-size: 0.875em;
+}
+
+.sidebar-container .material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+    font-size: 1.7em;
+}
+
+
 .folder {
     display: flex;
     align-items: center;
     cursor: pointer;
-    width: 9em;
-    font-size: 1.3em;
+    font-size: 1em;
     justify-content: space-between;
-    padding-left: 1em;
+    padding-left: 1.625em;
     padding-right: 1em;
 }
 
-.folder:hover {
-    background-color: #ccc;
-    border-radius: 10px;
+.folder .inbox {
+    font-weight: 600;
+    letter-spacing: 0.8px;
 }
 
-
-.sidebar-container {
-    background-color: var(--clr6);
+.folder:hover {
+    background-color: #e6e6e6;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
 }
 
 .sidebar-container .folder.active {
-    background-color: var(--clr7);
-    border-radius: 10px;
+    background-color: var(--clr8);
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
 }

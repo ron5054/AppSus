@@ -1,16 +1,28 @@
-.mail-preview-container {
-    display: flex;
-    align-items: center;
-}
+ .mail-preview-container {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     width: 100%;
+ }
 
-.mail-sender {
-    width: 15em;
-}
+ .mail-attr {
+     display: flex;
+     width: 100%;
+ }
 
-.mail-subject {
-    min-width: 15em;
-}
+ .mail-preview-container .date {
+     width: 4em;
+ }
 
-.mail-body {
-    width: 50em;
-}
+ .mail-sender {
+     width: 12.5em;
+     padding-right: 2em;
+ }
+
+ /* .mail-subject {} */
+
+
+
+ .mail-body {
+     width: 50em;
+ }

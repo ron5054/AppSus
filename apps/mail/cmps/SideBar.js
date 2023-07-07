@@ -1,7 +1,7 @@
 export default {
-        name: 'SideBar',
-        props: ['mails'],
-        template: `
+  name: 'SideBar',
+  props: ['mails'],
+  template: `
           <section class="sidebar-container">
             <section
               class="inbox folder"
@@ -9,7 +9,7 @@ export default {
               @click="onSetFilterBy('inbox')"
             >
               <span class="material-symbols-outlined">inbox</span>
-              <span>Inbox</span>
+              <span class="inbox">Inbox</span>
               <span class="unread-count">{{ unreadCount }}</span>
             </section>
       
@@ -44,23 +44,23 @@ export default {
             </section>
           </section>
         `,
-        data() {
-                return {
-                        currentTab: ''
-                }
-        },
-        computed: {
-                unreadCount() {
-                        if (!this.mails) {
-                                return 0
-                        }
-                        return this.mails.filter(mail => !mail.isRead).length
-                },
-        },
-        methods: {
-                onSetFilterBy(tab) {
-                        this.currentTab = tab
-                        this.$router.push({ path: '/mail', query: { tab } })
-                },
-        },
+  data() {
+    return {
+      currentTab: ''
+    }
+  },
+  computed: {
+    unreadCount() {
+      if (!this.mails) {
+        return 0
+      }
+      return this.mails.filter(mail => !mail.isRead).length
+    },
+  },
+  methods: {
+    onSetFilterBy(tab) {
+      this.currentTab = tab
+      this.$router.push({ path: '/mail', query: { tab } })
+    },
+  },
 };
