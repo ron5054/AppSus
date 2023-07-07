@@ -9,7 +9,6 @@ export default {
                     <input v-model="noteToAdd.info.txt" type="text" placeholder="Take a note...">
 
                     <section class="note-add-actions-bar">
-                            <span class="material-symbols-outlined">push_pin</span>
 
                             <span class="material-symbols-outlined">palette</span>
 

@@ -1,7 +1,6 @@
 import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/async-storage.service.js'
 
-const PAGE_SIZE = 5
 const NOTE_KEY = 'noteDB'
 
 var gFilterBy
@@ -77,7 +76,7 @@ const gNotes = [
         type: 'NoteTxt',
         isPinned: true,
         style: { backgroundColor: '#00d' },
-        info: { txt: 'What is love?' }
+        info: { txt: 'Don\'t hurt me' }
     },
     {
         id: 'n108',
@@ -108,7 +107,7 @@ const gNotes = [
         type: 'NoteTxt',
         isPinned: true,
         style: { backgroundColor: '#00d' },
-        info: { txt: 'Baby don\'t hurt me' }
+        info: { txt: 'No mo' }
     },
     {
         id: 'n111',

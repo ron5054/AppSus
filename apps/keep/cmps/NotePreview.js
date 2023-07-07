@@ -7,16 +7,13 @@ export default {
     props: ['note'],
     template: `
         <router-link :to="noteUrl">
-            <!-- <h2>{{ note.title }}</h2> -->
 
-            <article class="note-preview" :style="noteStyle">
+            <article class="note-preview" :class="{ pinned: note.isPinned }">
                 <component
                 :is="note.type"
                 :info="note.info"
                 />
             </article>
-
-            <!-- <p>{{ note.content }}</p> -->
 
         </router-link>
     `,

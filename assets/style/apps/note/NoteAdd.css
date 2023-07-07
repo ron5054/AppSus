@@ -7,7 +7,8 @@
 
 .note-add-section {
     border-radius: 10px;
-    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3)
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
 .note-add-section input {
@@ -25,3 +26,13 @@
     display: flex;
     justify-content: space-around;
 }
+
+.note-add-actions-bar span {
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 25px;
+}
+
+/* .note-add-actions-bar span:hover {
+    background-color: rgba(173, 173, 173, 0.315);
+} */

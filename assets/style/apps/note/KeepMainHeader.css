@@ -5,13 +5,13 @@
     color: #fff;
     border-bottom: 1px solid rgba(0, 0, 0, 0.11);
     justify-content: space-evenly;
+    font-family: 'Roboto';
 }
 
 .keep-main-header-title {
     font-size: 1.5rem;
     font-weight: bold;
     margin-left: 1rem;
-
 }
 
 .header-logo {
@@ -22,16 +22,24 @@
 
 .header-input {
     width: 800px;
-    border-radius: 8px;
-}
-
-.header-search input {
-    padding: 0.5rem;
+    border-radius: 14px;
+    font-size: 20px;
     border: none;
-    border-radius: 4px;
-    font-size: 1rem;
+    background-color: rgba(211, 211, 211, 0.308);
 }
 
-.header-search input:focus {
+.header-input:focus {
+    outline: none;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
+    background-color: white;
+}
+
+.header-filter {
+    border-radius: 14px;
+    border: none;
+    font-size: 20px;
+    font-family: 'Roboto';
+    text-align: center;
+    margin-inline-end: 20px;
     outline: none;
 }

@@ -91,6 +91,11 @@ export default {
             delete note.id
             this.save(note)
         },
+        pinNote(note) {
+            this.notes.sort((a, b) => {
+
+            })
+        },
         goToHomePage() {
             this.$router.push('/')
         },
@@ -111,14 +116,25 @@ export default {
         },
     },
     computed: {
+        sortedNotes() {
+            return this.notes.slice().sort((a, b) => {
+                if (a.isPinned && !b.isPinned) return -1
+                if (!a.isPinned && b.isPinned) return 1
+                return 0
+            })
+        },
         filteredNotes() {
-            let filteredNotes = this.notes
+            let filteredNotes = this.sortedNotes
             const regex = new RegExp(this.filterBy.title, 'i')
             if (this.filterBy.title) {
                 filteredNotes = filteredNotes.filter(note => 'title' in note.info && regex.test(note.info.title))
             }
+            if (this.filterBy.type) {
+                filteredNotes = filteredNotes.filter(note => 'type' in note && (note.type === this.filterBy.type))
+            }
             return filteredNotes
         },
+
     },
 
     created() {

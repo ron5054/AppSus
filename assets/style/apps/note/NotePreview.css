@@ -1,12 +1,19 @@
 .note-card {
     list-style-type: none;
-    border: 1px solid #ccc;
+    border: 1px solid #cccccc9d;
     border-radius: 10px;
     padding: 15px;
     margin-bottom: 20px;
     break-inside: avoid;
     text-align: center;
     font-family: 'Roboto';
+
+    transform: translateX(0);
+    animation-fill-mode: both;
+
+    animation-name: pinNote;
+    animation-duration: 0.4s;
+    animation-timing-function: ease-in-out;
 }
 
 .note-card:hover {
@@ -32,6 +39,12 @@
         'opsz' 48
 }
 
+.note-card .material-symbols-outlined.fill {
+    padding: 3px;
+    font-variation-settings:
+        'FILL' 1
+}
+
 .note-preview-actions-bar {
     opacity: 0;
     transition: opacity 0.6s ease;
@@ -39,6 +52,15 @@
     justify-content: space-around;
     margin-block-start: 20px;
 }
+
+.note-preview-actions-bar span {
+    border-radius: 50%;
+}
+
+.note-preview-actions-bar span:hover {
+    background-color: rgba(173, 173, 173, 0.315);
+}
+
 
 .note-card:hover .note-preview-actions-bar {
     opacity: 1;
@@ -60,4 +82,23 @@
 
 .color-circle:hover {
     border: 3px solid black;
+}
+
+.note-card.pinned {
+    border: 2px solid black;
+
+    animation-name: pinNote;
+    animation-duration: 0.4s;
+    animation-timing-function: ease-in-out;
+}
+
+
+@keyframes pinNote {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
 }

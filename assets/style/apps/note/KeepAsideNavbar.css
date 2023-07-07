@@ -3,3 +3,7 @@
     flex-direction: column;
     margin-inline-start: 5px;
 }
+
+.keep-aside-navbar span {
+    cursor: pointer;
+}
