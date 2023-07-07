@@ -19,10 +19,12 @@
      padding-right: 2em;
  }
 
- /* .mail-subject {} */
-
-
+ .mail-subject {
+     padding-right: 5px;
+ }
 
  .mail-body {
-     width: 50em;
+     width: 100em;
+     color: var(--clr3);
+     font-weight: 400;
  }

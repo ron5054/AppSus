@@ -43,11 +43,11 @@ object {
 }
 
 /* tap targets: */
-nav a,
+/* nav a,
 button {
   min-width: 48px;
   min-height: 48px;
-}
+} */
 
 /* Simple and useful CSS Debugging Technique */
 .debug * {

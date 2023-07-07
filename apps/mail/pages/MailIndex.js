@@ -28,10 +28,10 @@ export default {
                      @remove="trashMail"
                      />
                 </section>
-
+                <ComposeMail @send="sendMail" @close="showCompose = false" v-if="showCompose"/>
+                    
             </section>
         </section>
-        <ComposeMail @send="sendMail" @close="showCompose = false" v-if="showCompose"/>
     `,
     data() {
         return {
@@ -56,7 +56,7 @@ export default {
                     console.log(this.mails);
                     this.mails.splice(idx, 1)
                     console.log(this.mails);
-                    showSuccessMsg('mail removed')
+                    showSuccessMsg('mail deleted')
                 })
                 .catch(err => showErrorMsg('Cannot remove mail'))
 
@@ -64,7 +64,8 @@ export default {
         trashMail(mailId) {
             const mail = this.mails.find(mail => mail.id === mailId)
             if (mail.isTrash) {
-                this.removeMail(mailId)
+                if (confirm('Are you sure you want to remove this mail?'))
+                    this.removeMail(mailId)
             } else {
                 mail.isTrash = true
                 mail.isInbox = false
@@ -105,10 +106,11 @@ export default {
     computed: {
         filteredmails() {
             let filteredmails = this.mails
+            filteredmails.sort((a, b) => b.sentAt - a.sentAt)
             if (this.filterBy.txt) {
                 const regex = new RegExp(this.filterBy.txt, 'i')
                 filteredmails = filteredmails.filter(mail => {
-                    return regex.test(mail.subject) || regex.test(mail.body)
+                    return regex.test(mail.subject) || regex.test(mail.body) || regex.test(mail.from)
                 })
             }
             if (this.filterBy.tab === 'inbox')

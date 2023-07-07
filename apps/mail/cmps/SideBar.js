@@ -6,8 +6,7 @@ export default {
             <section
               class="inbox folder"
               :class="{ active: currentTab === 'inbox' }"
-              @click="onSetFilterBy('inbox')"
-            >
+              @click="onSetFilterBy('inbox')">
               <span class="material-symbols-outlined">inbox</span>
               <span class="inbox">Inbox</span>
               <span class="unread-count">{{ unreadCount }}</span>
@@ -16,31 +15,25 @@ export default {
             <section
               class="starred folder"
               :class="{ active: currentTab === 'starred' }"
-              @click="onSetFilterBy('starred')"
-            >
+              @click="onSetFilterBy('starred')">
               <span class="material-symbols-outlined">star</span>
               <span>Starred</span>
-              <span></span>
             </section>
       
             <section
               class="sent folder"
               :class="{ active: currentTab === 'sent' }"
-              @click="onSetFilterBy('sent')"
-            >
+              @click="onSetFilterBy('sent')">
               <span class="material-symbols-outlined">send</span>
               <span>Sent</span>
-              <span></span>
             </section>
       
             <section
               class="trash folder"
               :class="{ active: currentTab === 'trash' }"
-              @click="onSetFilterBy('trash')"
-            >
+              @click="onSetFilterBy('trash')">
               <span class="material-symbols-outlined">delete</span>
               <span>Trash</span>
-              <span></span>
             </section>
           </section>
         `,
