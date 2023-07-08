@@ -34,7 +34,7 @@
     font-size: large;
     border: none;
     background-color: rgb(1, 87, 155);
-    color: white;
+    color: rgb(255, 255, 255);
     border-radius: 50%;
     width: 32px;
     height: 32px;
@@ -46,10 +46,10 @@ mail-user-profile {
 }
 
 .mail-filter label:hover {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.302), 0 4px 8px 3px rgba(60, 64, 67, 0.149);
 }
 
 .mail-filter input:hover {
-    background-color: white;
+    background-color: rgb(255, 255, 255)
 }

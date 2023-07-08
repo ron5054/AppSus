@@ -15,7 +15,7 @@ export default {
                 <section class="cb-sb">
                     <section class="logo-container">
                         <button @click="goHome" class="material-symbols-outlined">menu</button>
-                        <img class="logo" src="../../assets/img/gmail-logo.png" alt="" />
+                        <img class="logo" src="assets/img/gmail-logo.png" alt="" />
                     </section>
                     <button @click="toggleCompose" class="compose-btn"><span class="material-symbols-outlined">edit</span>Compose</button>
                     <SideBar @filter="setFilterBy" :mails="mails" />
