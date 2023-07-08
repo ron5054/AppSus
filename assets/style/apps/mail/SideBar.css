@@ -43,10 +43,22 @@
     background-color: #e6e6e6;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
+    width: 245px;
 }
 
 .sidebar-container .folder.active {
     background-color: var(--clr8);
+    width: 245px;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+}
+
+.sidebar-container .folder.active .material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 1,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
 }

@@ -1,7 +1,12 @@
 .mail-filter {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+    width: 100%;
     background-color: var(--clr6);
 }
-
 
 .mail-filter input {
     font-size: 1.2em;
@@ -26,4 +31,16 @@
 .mail-filter .material-symbols-outlined {
     padding: 5px;
     font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 48;
+}
+
+.user-btn {
+    margin-inline-end: 10px;
+    padding-bottom: 5px;
+    font-size: large;
+    border: none;
+    background-color: rgb(1, 87, 155);
+    color: white;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
 }

@@ -18,9 +18,8 @@ export default {
                     <SideBar @filter="setFilterBy" :mails="mails" />
                 </section>
 
-                <section>
+                <section class="mf-ml">
                     <mailFilter @filter="setFilterBy"/>
-                    <!-- <a class="home-btn material-symbols-outlined" href="/">home</a> -->
                     <mailList
                      v-if="mails"
                      :mails="filteredmails"
@@ -28,6 +27,7 @@ export default {
                      @important="importantMail"
                      @remove="trashMail"
                      @toggleRead="toggleRead"
+                     @removeSelected="removeSelected"
                      />
                 </section>
                 <ComposeMail @send="sendMail" @close="showCompose = false" v-if="showCompose"/>
@@ -47,26 +47,24 @@ export default {
         toggleCompose() {
             this.showCompose = !this.showCompose
         },
-        // removeSelected(mailIdArray) {
-        //     mailIdArray.forEach(mailId => {
-        //         const mail = this.mails.find(mail => mail.id === mailId)
-        //         mailService.remove(mailId)
-        //             .then((res) => {
-        //                 const idx = this.mails.findIndex(mail => mail.id === mailId)
-        //                 this.mails.splice(idx, 1)
-        //                 showSuccessMsg('Mail deleted')
-        //             })
-        // else {
-        //     mail.isTrash = true
-        //     mail.isRead = true
-        //     mail.isInbox = false
-        //     mail.isSent = false
-        //     mailService.save(mail)
-        //         .then(showSuccessMsg('Mails moved to trash'))
-        //         .catch(err => showErrorMsg('Cannot move to trash'))
-        // }
-        //     })
-        // },
+        removeSelected(mailIdArray) {
+            if (!mailIdArray || !mailIdArray.length) return
+            mailIdArray.forEach(mailId => {
+                const mail = this.mails.find(mail => mail.id === mailId)
+                if (mail.isTrash) {
+                    this.removeMail(mailId)
+                    console.log('holy shit');
+                } else {
+                    mail.isTrash = true
+                    mail.isRead = true
+                    mail.isInbox = false
+                    mail.isSent = false
+                    mailService.save(mail)
+                        .then(showSuccessMsg('Mails moved to trash'))
+                        .catch(err => showErrorMsg('Cannot move to trash'))
+                }
+            })
+        },
         removeMail(mailId) {
             mailService.remove(mailId)
                 .then((res) => {

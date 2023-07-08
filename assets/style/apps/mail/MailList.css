@@ -46,10 +46,12 @@
      background-color: rgb(194, 219, 255);
  }
 
+
  .mail-list .material-symbols-outlined:hover {
      transform: scale(130%);
      transition: 0.3s ease-in-out;
-
+     color: black;
+     cursor: pointer;
  }
 
  .mail-list .material-symbols-outlined {
@@ -70,7 +72,7 @@
      font-variation-settings:
          'FILL' 1;
      color: gold;
-     /* Gold color when starred */
+     /* Gold color when starred or important*/
  }
 
  .material-symbols-outlined.star-alined {

@@ -24,7 +24,7 @@ export default {
               class="important folder"
               :class="{ active: currentTab === 'important' }"
               @click="onSetFilterBy('important')">
-              <span class="material-symbols-outlined">label</span>
+              <span class="material-symbols-outlined">label_important</span>
               <span>Important</span>
             </section>
       
