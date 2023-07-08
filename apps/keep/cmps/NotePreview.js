@@ -10,6 +10,7 @@ export default {
             <component
             :is="note.type"
             :info="note.info"
+            :note="note"
             />
         </article>
     `,

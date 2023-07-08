@@ -1,3 +1,5 @@
+import { eventBus } from "../../../services/event-bus.service.js"
+
 import { noteService } from '../services/note.service.js'
 import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.service.js'
 
@@ -5,7 +7,6 @@ import NoteAdd from './NoteAdd.js'
 
 import NoteFilter from '../cmps/NoteFilter.js'
 import NoteList from '../cmps/NoteList.js'
-// import NoteEdit from '../pages/NoteEdit.js'
 
 export default {
     name: 'NoteIndex',
@@ -25,8 +26,6 @@ export default {
 
                 <NoteFilter @filter="setFilterBy"></NoteFilter>
 
-                <!-- <NoteEdit v-if="editingNote" :note="editingNote" @save="saveEditedNote"></NoteEdit> -->
-
                 <div class="header-actions-bar"></div>
 
             </header>
@@ -43,7 +42,6 @@ export default {
                     @duplicate="save"
                     @changeColor="changeNoteColor"
                     @pin="pinNote"
-                    @edit="editNote"
                 />
             </div>
 
@@ -56,13 +54,9 @@ export default {
             notes: [],
             filterBy: {},
             selectedColor: '',
-            // editingNote: null,
         }
     },
     methods: {
-        editNote(note) {
-            // this.editingNote = note
-        },
         saveEditedNote(editedNote) {
             const index = this.notes.findIndex(note => note.id === editedNote.id);
             if (index !== -1) {
@@ -148,6 +142,11 @@ export default {
 
     },
     created() {
+        eventBus.on('todoDone', (note, todoIndex, isChecked) => {
+            note.info.todos[todoIndex].doneAt = isChecked ? Date.now() : null
+            noteService.save(note)
+        })
+
         noteService.query()
             .then(notes => (this.notes = notes))
     },
@@ -155,6 +154,5 @@ export default {
         NoteFilter,
         NoteList,
         NoteAdd,
-        // NoteEdit,
     },
 }
