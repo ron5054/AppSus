@@ -2,7 +2,7 @@ import NotePreview from './NotePreview.js'
 
 export default {
     props: ['notes'],
-    emits: ['duplicate', 'remove', 'changeColor'],
+    emits: ['duplicate', 'remove', 'changeColor', 'edit'],
     template: `
     <section>
       <ul class="clean-list note-list">
@@ -21,6 +21,8 @@ export default {
             <span class="material-symbols-outlined" @click="onToggleColorPalette(note)">palette</span>
 
             <span class="material-symbols-outlined" @click="onDuplicateNote(note)">content_copy</span>
+
+            <span class="material-symbols-outlined" @click="onEditNote(note)">edit</span>
 
             <span class="material-symbols-outlined" @click="onRemoveNote(note.id)">delete</span>
           </section>
@@ -72,20 +74,14 @@ export default {
             note.isPinned = !note.isPinned
             this.$emit('pin', note)
         },
+        onEditNote(note) {
+            this.$emit('edit', note);
+        },
         noteStyle(note) {
             if (note.style && note.style.backgroundColor) {
                 return { backgroundColor: note.style.backgroundColor }
             }
             return {}
-        },
-    },
-    computed: {
-        noteBackgroundColor() {
-            // return (note) => {
-            //     if (note.style && note.style.backgroundColor) {
-            //         return note.style.backgroundColor
-            //     } else return ''
-            // }
         },
     },
     components: {

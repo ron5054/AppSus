@@ -10,11 +10,6 @@ export default {
 
                     <section class="note-add-actions-bar">
 
-                            <span class="material-symbols-outlined">palette</span>
-
-                            <!-- <input type="file" ref="fileInput" style="display: none" @change="ImgUpload"> -->
-                            <span class="material-symbols-outlined" @click="">image</span>
-
                             <div @click="save()">
                                 <span class="material-symbols-outlined">save</span>
                             </div>

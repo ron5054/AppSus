@@ -5,6 +5,7 @@ import NoteAdd from './NoteAdd.js'
 
 import NoteFilter from '../cmps/NoteFilter.js'
 import NoteList from '../cmps/NoteList.js'
+import NoteEdit from '../pages/NoteEdit.js'
 
 export default {
     name: 'NoteIndex',
@@ -21,7 +22,8 @@ export default {
 
                 <div class="header-logo">Keep</div>
 
-                <NoteFilter @filter="setFilterBy" />
+                <NoteFilter @filter="setFilterBy"></NoteFilter>
+                <!-- <NoteEdit v-if="editingNote" :note="editingNote" @save="saveEditedNote"></NoteEdit> -->
 
                 <div class="header-actions-bar"></div>
 
@@ -39,6 +41,7 @@ export default {
                     @duplicate="save"
                     @changeColor="changeNoteColor"
                     @pin="pinNote"
+                    @edit="editNote"
                 />
             </div>
 
@@ -53,9 +56,27 @@ export default {
             notes: [],
             filterBy: {},
             selectedColor: '',
+            editingNote: null,
         }
     },
     methods: {
+        editNote(note) {
+            this.editingNote = note;
+        },
+        saveEditedNote(editedNote) {
+            const index = this.notes.findIndex(note => note.id === editedNote.id);
+            if (index !== -1) {
+                this.notes[index] = editedNote;
+                noteService.save(editedNote)
+                    .then(() => {
+                        showSuccessMsg('Note updated');
+                    })
+                    .catch(err => {
+                        showErrorMsg('Failed to update note');
+                    });
+            }
+            this.editingNote = null;
+        },
         removeNote(noteId) {
             noteService.remove(noteId)
                 .then(() => {
@@ -91,10 +112,8 @@ export default {
             this.$router.push('/')
         },
         save(noteToAdd) {
-            console.log(noteToAdd)
             noteService.save(noteToAdd)
                 .then(savedNote => {
-                    console.log('Saved note', savedNote)
                     showSuccessMsg('Note saved')
                     this.notes.push(savedNote)
                 })
@@ -106,6 +125,7 @@ export default {
             this.filterBy = filterBy
         },
     },
+
     computed: {
         sortedNotes() {
             return this.notes.slice().sort((a, b) => {
@@ -135,5 +155,6 @@ export default {
         NoteFilter,
         NoteList,
         NoteAdd,
+        NoteEdit,
     },
 }

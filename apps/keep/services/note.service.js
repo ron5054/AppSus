@@ -12,7 +12,7 @@ const gNotes = [
         type: 'NoteTxt',
         isPinned: true,
         isColorPaletteVisible: false,
-        style: { backgroundColor: '#F44336' },
+        style: { backgroundColor: '#f28b82' },
         info: { txt: 'What is love?' }
     },
     {
@@ -23,14 +23,14 @@ const gNotes = [
             url: `https://picsum.photos/200/300/`,
             title: 'Nechmaaaaad'
         },
-        style: { backgroundColor: '#2196F3' }
+        style: { backgroundColor: '#fbbc04' }
     },
     {
         id: 'n103',
         type: 'NoteTodos',
         isPinned: false,
         isColorPaletteVisible: false,
-        style: { backgroundColor: '#4CAF50' },
+        style: { backgroundColor: '#fff475' },
         info: {
             title: 'What is async?',
             todos: [
@@ -46,7 +46,7 @@ const gNotes = [
         type: 'NoteTxt',
         isPinned: true,
         isColorPaletteVisible: false,
-        style: { backgroundColor: '#FFFF00' },
+        style: { backgroundColor: '#ccff90' },
         info: { txt: 'Baby don\'t hurt me' }
     },
     {
@@ -57,14 +57,14 @@ const gNotes = [
             url: 'https://picsum.photos/200/250',
             title: 'Magniiiiiiv'
         },
-        style: { backgroundColor: '#E91E63' }
+        style: { backgroundColor: '#a7ffeb' }
     },
     {
         id: 'n106',
         type: 'NoteTodos',
         isPinned: false,
         isColorPaletteVisible: false,
-        style: { backgroundColor: '#FF9800' },
+        style: { backgroundColor: '#cbf0f8' },
         info: {
             title: 'Never Gonna',
             todos: [
@@ -81,7 +81,7 @@ const gNotes = [
         type: 'NoteTxt',
         isPinned: true,
         isColorPaletteVisible: false,
-        style: { backgroundColor: '#2196F3' },
+        style: { backgroundColor: '#aecbfa' },
         info: { txt: 'Don\'t hurt me' }
     },
     {
@@ -93,7 +93,7 @@ const gNotes = [
             url: 'https://picsum.photos/200/400',
             title: 'Nechmaaaaad'
         },
-        style: { backgroundColor: '#FFFF00' }
+        style: { backgroundColor: '#d7aefb' }
     },
     {
         id: 'n109',
@@ -109,7 +109,7 @@ const gNotes = [
                 { txt: 'Desert you', doneAt: null }
             ]
         },
-        style: { backgroundColor: '#E91E63' }
+        style: { backgroundColor: '#fdcfe8' }
     },
     {
         id: 'n110',
@@ -117,7 +117,7 @@ const gNotes = [
         type: 'NoteTxt',
         isPinned: true,
         isColorPaletteVisible: false,
-        style: { backgroundColor: '#4CAF50' },
+        style: { backgroundColor: '#fbbc04' },
         info: { txt: 'No mo' }
     },
     {
@@ -128,7 +128,7 @@ const gNotes = [
             url: 'https://picsum.photos/200/200',
             title: 'Magniiiiiiv'
         },
-        style: { backgroundColor: '#4CAF50' }
+        style: { backgroundColor: '#e6c9a8' }
     },
     {
         id: 'n112',
@@ -143,7 +143,7 @@ const gNotes = [
                 { txt: 'No Mo', doneAt: null }
             ]
         },
-        style: { backgroundColor: '#F44336' }
+        style: { backgroundColor: '#e8eaed' }
     },
 ]
 
