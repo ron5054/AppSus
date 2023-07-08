@@ -78,7 +78,7 @@ function generateMails(numMails) {
         const mail = {
             id: utilService.makeId(),
             subject: randomTxt[Math.floor(Math.random() * randomTxt.length)],
-            body: sentence1 + ' ' + sentence2 + ' ' + sentence3 + sentence4 + ' ' + sentence5,
+            body: sentence1 + ' ' + sentence2 + ' ' + sentence3 + ' ' + sentence4 + ' ' + sentence5,
             isInbox: true,
             isRead: false,
             isStarred: false,

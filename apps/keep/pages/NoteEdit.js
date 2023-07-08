@@ -7,17 +7,17 @@ export default {
     template: `
         <form @submit.prevent="save" class="edit-note">
 
-            <input v-model="noteToEdit.info.title" type="text" placeholder="Title">
+            <input class="note-edit-input" v-model="noteToEdit.info.title" type="text" placeholder="Title">
 
-            <input v-if="noteToEdit.type === 'NoteTxt'" v-model="noteToEdit.info.txt" type="text" placeholder="Edit Here">
+            <input class="note-edit-input" v-if="noteToEdit.type === 'NoteTxt'" v-model="noteToEdit.info.txt" type="text" placeholder="Edit Here">
 
-            <input v-if="noteToEdit.type === 'NoteTodos'" v-model="noteToEdit.info.todos.txt" type="text" placeholder="Edit Here">
-            <input v-if="noteToEdit.type === 'NoteTodos'" v-model="noteToEdit.info.todos.txt" type="text" placeholder="Edit Here">
-            <input v-if="noteToEdit.type === 'NoteTodos'" v-model="noteToEdit.info.todos.txt" type="text" placeholder="Edit Here">
+            <input class="note-edit-input" v-if="noteToEdit.type === 'NoteTodos'" v-model="noteToEdit.info.todos.txt" type="text" placeholder="Edit Here">
+            <input class="note-edit-input" v-if="noteToEdit.type === 'NoteTodos'" v-model="noteToEdit.info.todos.txt" type="text" placeholder="Edit Here">
+            <input class="note-edit-input" v-if="noteToEdit.type === 'NoteTodos'" v-model="noteToEdit.info.todos.txt" type="text" placeholder="Edit Here">
 
 
-            <button>Save</button>
-            <button @click="onCancel">Cancel</button>
+            <!-- <button>Save</button> -->
+            <button class="close-btn">Close</button>
         </form>
 
     `,
