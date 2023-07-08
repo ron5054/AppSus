@@ -1,3 +1,23 @@
 .edit-note input {
     width: 100%;
 }
+
+.close-btn {
+    background-color: transparent;
+    cursor: pointer;
+    padding: 8px 24px;
+    border: none;
+    margin-block-start: 10px;
+}
+
+.close-btn:hover {
+    background-color: rgba(95, 99, 104, 0.039);
+    border-radius: 3px;
+}
+
+.note-edit-input {
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    margin-block-end: 5px;
+}
