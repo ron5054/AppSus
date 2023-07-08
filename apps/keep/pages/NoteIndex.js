@@ -16,17 +16,23 @@ export default {
         <div class="keep-container">
             <header class="keep-main-header">
 
-                <span class="Home-btn material-symbols-outlined" @click="goToHomePage">home</span>
+                <div class="header-left-container">
+                    <span class="Home-btn material-symbols-outlined" @click="goToHomePage">home</span>
 
-                <div>
-                    <img class="header-icon" src="assets/img/keep-icon.png"/>
+                    <div>
+                        <img class="header-icon" src="assets/img/keep-icon.png"/>
+                    </div>
+
+                    <div class="header-logo">Keep</div>
+                </div>
+                <div class="header-right-container">
+
+                    <NoteFilter @filter="setFilterBy"></NoteFilter>
+
+                    <div class="header-actions-bar"></div>
+
                 </div>
 
-                <div class="header-logo">Keep</div>
-
-                <NoteFilter @filter="setFilterBy"></NoteFilter>
-
-                <div class="header-actions-bar"></div>
 
             </header>
 
@@ -44,8 +50,6 @@ export default {
                     @pin="pinNote"
                 />
             </div>
-
-
         </div>
 
     `,

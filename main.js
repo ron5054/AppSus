@@ -2,7 +2,6 @@ const { createApp } = Vue
 
 import { router } from './routes.js'
 
-import AppHeader from './cmps/AppHeader.js'
 import UserMsg from './cmps/UserMsg.js'
 
 const options = {
@@ -13,7 +12,6 @@ const options = {
         </section>
     `,
     components: {
-        AppHeader,
         UserMsg,
     },
 }

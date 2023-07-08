@@ -23,9 +23,7 @@
 @import 'apps/mail/SideBar.css';
 
 
-
 @import 'apps/note/KeepMainHeader.css';
-@import 'apps/note/KeepAsideNavbar.css';
 @import 'apps/note/NoteIndex.css';
 @import 'apps/note/NoteList.css';
 @import 'apps/note/NotePreview.css';

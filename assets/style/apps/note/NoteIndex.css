@@ -8,6 +8,7 @@
 
 .keep-main-header {
     grid-area: 1 / 1 / 2 / 2;
+    justify-content: stretch;
 }
 
 .keep-addnote-section {
@@ -24,16 +25,28 @@
     color: #5f6368;
 }
 
+.header-left-container {
+    display: flex;
+    align-items: center;
+    margin-inline-end: 100px;
+}
+
+.keep-main-header img {
+    margin-inline-start: 40px;
+    margin-inline-end: 40px;
+}
+
 
 @media (max-width: 768px) {
 
 
     .keep-container {
-        grid-template-rows: 0.2fr 0.2fr 3.6fr;
+        grid-template-rows: auto auto 3.6fr;
     }
 
     .keep-main-header {
         grid-area: 1 / 1 / 2 / 3;
+        flex-direction: column;
     }
 
     .keep-addnote-section {

@@ -38,8 +38,6 @@
     font-size: 24px;
 }
 
-
-
 .note-card .material-symbols-outlined {
     padding: 3px;
     cursor: pointer;
@@ -78,7 +76,6 @@
 }
 
 .color-palette {
-    /* position: absolute; */
     margin-block-start: 18px;
     z-index: 9999;
 }
@@ -103,6 +100,16 @@
     animation-name: pinNote;
     animation-duration: 0.4s;
     animation-timing-function: ease-in-out;
+}
+
+.note-card ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.note-card li span {
+    margin-inline-start: 5px;
 }
 
 

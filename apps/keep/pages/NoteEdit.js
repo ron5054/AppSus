@@ -7,21 +7,21 @@ export default {
     template: `
         <form @submit.prevent="save" class="edit-note">
 
-            <input class="note-edit-input" v-model="noteToEdit.info.title" type="text" placeholder="Title">
+            <input class="edit-input" v-model="noteToEdit.info.title" type="text" placeholder="Title">
 
-            <input class="note-edit-input" v-if="noteToEdit.type === 'NoteTxt'" v-model="noteToEdit.info.txt" type="text" placeholder="Edit Here">
+            <input class="edit-input" v-if="noteToEdit.type === 'NoteTxt'" v-model="noteToEdit.info.txt" type="text" placeholder="Edit Here">
 
             <div v-for="todo in noteToEdit.info.todos">
                 <input
-                    class="note-edit-input"
+                    class="edit-input"
                     v-model="todo.txt"
                     type="text"
                     placeholder="Edit Here"
                 >
             </div>
 
-            <button>Save</button>
-            <button class="close-btn" @click="onCancel">Cancel</button>
+            <button class="edit-save-btn">Save</button>
+            <button class="edit-cancel-btn" @click="onCancel">Cancel</button>
         </form>
 
     `,

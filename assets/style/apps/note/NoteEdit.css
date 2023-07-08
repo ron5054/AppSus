@@ -2,20 +2,22 @@
     width: 100%;
 }
 
-.close-btn {
+.edit-cancel-btn,
+.edit-save-btn {
     background-color: transparent;
     cursor: pointer;
     padding: 8px 24px;
     border: none;
     margin-block-start: 10px;
+    border-radius: 6px;
 }
 
-.close-btn:hover {
-    background-color: rgba(95, 99, 104, 0.039);
-    border-radius: 3px;
+.edit-cancel-btn:hover,
+.edit-save-btn:hover {
+    background-color: rgba(95, 99, 104, 0.356);
 }
 
-.note-edit-input {
+.edit-input {
     border: none;
     outline: none;
     border-radius: 5px;

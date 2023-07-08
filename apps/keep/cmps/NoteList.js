@@ -1,5 +1,3 @@
-// import { noteService } from '../services/note.service.js'
-
 import NotePreview from './NotePreview.js'
 import NoteEdit from '../pages/NoteEdit.js'
 
@@ -96,13 +94,6 @@ export default {
             const index = this.notes.findIndex(note => note.id === editedNote.id);
             if (index !== -1) {
                 this.notes[index] = editedNote
-                // noteService.save(editedNote)
-                //     .then(() => {
-                //         showSuccessMsg('Note updated');
-                //     })
-                //     .catch(err => {
-                //         showErrorMsg('Failed to update note');
-                //     });
             }
             this.editingNote = null;
         },

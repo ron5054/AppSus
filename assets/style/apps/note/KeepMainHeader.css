@@ -19,8 +19,16 @@
     color: #5f6368;
 }
 
+.header-left-container {
+    margin-inline-start: 40px;
+}
+
+.header-right-container {
+    margin-inline-start: 10px;
+}
+
 .header-input {
-    width: 800px;
+    max-width: 800px;
     border-radius: 14px;
     font-size: 20px;
     border: none;
@@ -41,4 +49,5 @@
     text-align: center;
     margin-inline-end: 20px;
     outline: none;
+    color: #5f6368;
 }

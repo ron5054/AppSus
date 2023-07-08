@@ -32,11 +32,11 @@ const gNotes = [
         isColorPaletteVisible: false,
         style: { backgroundColor: '#fff475' },
         info: {
-            title: 'What is async?',
+            title: 'Chak?',
             todos: [
-                { txt: 'Promise don\'t hurt me', doneAt: null },
-                { txt: 'Don\'t hurt me', doneAt: null },
-                { txt: 'No mo', doneAt: null }
+                { txt: 'Chak', doneAt: null },
+                { txt: 'Chak chak', doneAt: null },
+                { txt: 'Chak chak chak', doneAt: null }
             ]
         }
     },
@@ -136,14 +136,35 @@ const gNotes = [
         isPinned: false,
         isColorPaletteVisible: false,
         info: {
-            title: 'What is Vue?',
+            title: '',
             todos: [
-                { txt: 'Frameworks don\'t hurt me', doneAt: null },
-                { txt: 'Don\'t hurt me', doneAt: null },
-                { txt: 'No Mo', doneAt: null }
+                { txt: 'Meet with Matt', doneAt: null },
+                { txt: 'Feed the cat', doneAt: null },
+                { txt: 'Get a tat', doneAt: null }
             ]
         },
         style: { backgroundColor: '#e8eaed' }
+    },
+    {
+        id: 'n113',
+        type: 'NoteImg',
+        isPinned: false,
+        isColorPaletteVisible: false,
+        info: {
+            url: 'https://picsum.photos/200/380',
+            title: 'Nechmaaaaad'
+        },
+        style: { backgroundColor: '#e8eaed' }
+    },
+    {
+        id: 'n114',
+        type: 'NoteImg',
+        isPinned: false,
+        info: {
+            url: 'https://picsum.photos/200/230',
+            title: 'Magniiiiiiv'
+        },
+        style: { backgroundColor: '#a7ffeb' }
     },
 ]
 

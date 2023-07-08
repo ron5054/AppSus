@@ -11,8 +11,7 @@ export default {
                         type="checkbox"
                         @change="onCheckBox(note, index, $event)"
                         :checked="todo.doneAt ? true : false">
-                    <span>{{ todo.txt }}</span>
-                    <span v-if="todo.doneAt"> - Done</span>
+                    <span :style="{ 'text-decoration': todo.doneAt ? 'line-through' : 'none' }">{{ todo.txt }}</span>
                 </li>
             </ul>
         </div>
