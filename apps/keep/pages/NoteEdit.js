@@ -11,8 +11,6 @@ export default {
 
             <input v-if="noteToEdit.type === 'NoteTxt'" v-model="noteToEdit.info.txt" type="text" placeholder="Edit Here">
 
-
-
             <input v-if="noteToEdit.type === 'NoteTodos'" v-model="noteToEdit.info.todos.txt" type="text" placeholder="Edit Here">
             <input v-if="noteToEdit.type === 'NoteTodos'" v-model="noteToEdit.info.todos.txt" type="text" placeholder="Edit Here">
             <input v-if="noteToEdit.type === 'NoteTodos'" v-model="noteToEdit.info.todos.txt" type="text" placeholder="Edit Here">
