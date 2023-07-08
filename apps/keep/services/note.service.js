@@ -4,8 +4,6 @@ import { storageService } from '../../../services/async-storage.service.js'
 const NOTE_KEY = 'noteDB'
 
 var gFilterBy
-var gSortBy
-var gPageIdx
 
 const gNotes = [
     {
@@ -13,7 +11,8 @@ const gNotes = [
         createdAt: 1112222,
         type: 'NoteTxt',
         isPinned: true,
-        style: { backgroundColor: '#00d' },
+        isColorPaletteVisible: false,
+        style: { backgroundColor: '#F44336' },
         info: { txt: 'What is love?' }
     },
     {
@@ -24,12 +23,14 @@ const gNotes = [
             url: `https://picsum.photos/200/300/`,
             title: 'Nechmaaaaad'
         },
-        style: { backgroundColor: '#00d' }
+        style: { backgroundColor: '#2196F3' }
     },
     {
         id: 'n103',
         type: 'NoteTodos',
         isPinned: false,
+        isColorPaletteVisible: false,
+        style: { backgroundColor: '#4CAF50' },
         info: {
             title: 'What is async?',
             todos: [
@@ -44,7 +45,8 @@ const gNotes = [
         createdAt: 1112222,
         type: 'NoteTxt',
         isPinned: true,
-        style: { backgroundColor: '#00d' },
+        isColorPaletteVisible: false,
+        style: { backgroundColor: '#FFFF00' },
         info: { txt: 'Baby don\'t hurt me' }
     },
     {
@@ -55,18 +57,21 @@ const gNotes = [
             url: 'https://picsum.photos/200/250',
             title: 'Magniiiiiiv'
         },
-        style: { backgroundColor: '#00d' }
+        style: { backgroundColor: '#E91E63' }
     },
     {
         id: 'n106',
         type: 'NoteTodos',
         isPinned: false,
+        isColorPaletteVisible: false,
+        style: { backgroundColor: '#FF9800' },
         info: {
-            title: 'BOOOOOM lo oved',
+            title: 'Never Gonna',
             todos: [
-                { txt: 'Chak', doneAt: 187111111 },
-                { txt: 'Chak Chak', doneAt: null },
-                { txt: 'Chak Chak Chak', doneAt: null }
+                { txt: 'Make you cry', doneAt: null },
+                { txt: 'Say goodbye', doneAt: null },
+                { txt: 'Tell a lie', doneAt: null },
+                { txt: 'Hurt you', doneAt: null }
             ]
         }
     },
@@ -75,38 +80,44 @@ const gNotes = [
         createdAt: 1112222,
         type: 'NoteTxt',
         isPinned: true,
-        style: { backgroundColor: '#00d' },
+        isColorPaletteVisible: false,
+        style: { backgroundColor: '#2196F3' },
         info: { txt: 'Don\'t hurt me' }
     },
     {
         id: 'n108',
         type: 'NoteImg',
         isPinned: false,
+        isColorPaletteVisible: false,
         info: {
             url: 'https://picsum.photos/200/400',
             title: 'Nechmaaaaad'
         },
-        style: { backgroundColor: '#00d' }
+        style: { backgroundColor: '#FFFF00' }
     },
     {
         id: 'n109',
         type: 'NoteTodos',
         isPinned: false,
+        isColorPaletteVisible: false,
         info: {
-            title: 'What is love?',
+            title: 'Never Gonna',
             todos: [
-                { txt: 'Baby don\'t hurt me', doneAt: null },
-                { txt: 'Don\'t hurt me', doneAt: null },
-                { txt: 'No more', doneAt: null }
+                { txt: 'Give you up', doneAt: null },
+                { txt: 'Let you down', doneAt: null },
+                { txt: 'Run Around', doneAt: null },
+                { txt: 'Desert you', doneAt: null }
             ]
-        }
+        },
+        style: { backgroundColor: '#E91E63' }
     },
     {
         id: 'n110',
         createdAt: 1112222,
         type: 'NoteTxt',
         isPinned: true,
-        style: { backgroundColor: '#00d' },
+        isColorPaletteVisible: false,
+        style: { backgroundColor: '#4CAF50' },
         info: { txt: 'No mo' }
     },
     {
@@ -117,12 +128,13 @@ const gNotes = [
             url: 'https://picsum.photos/200/200',
             title: 'Magniiiiiiv'
         },
-        style: { backgroundColor: '#00d' }
+        style: { backgroundColor: '#4CAF50' }
     },
     {
         id: 'n112',
         type: 'NoteTodos',
         isPinned: false,
+        isColorPaletteVisible: false,
         info: {
             title: 'What is Vue?',
             todos: [
@@ -131,7 +143,7 @@ const gNotes = [
                 { txt: 'No Mo', doneAt: null }
             ]
         },
-        style: { backgroundColor: '#00d' }
+        style: { backgroundColor: '#F44336' }
     },
 ]
 
@@ -189,12 +201,6 @@ function getNextNoteId(noteId) {
 function _createNotes() {
     let notes = utilService.loadFromStorage(NOTE_KEY)
     if (!notes || !notes.length) {
-        // notes = []
-        // notes.push(_createNote('Meet with Matt'))
-        // notes.push(_createNote('Feed the cat'))
-        // notes.push(_createNote('Buy a hat'))
-        // notes.push(_createNote('Get a tat'))
-
         notes = gNotes
         utilService.saveToStorage(NOTE_KEY, notes)
     }
