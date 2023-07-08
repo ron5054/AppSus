@@ -12,7 +12,6 @@
 /* Components */
 @import 'cmps/UserMsg.css';
 @import 'cmps/HomePage.css';
-@import 'cmps/AppHeader.css';
 
 /* Apps */
 @import 'apps/mail/MailFilter.css';

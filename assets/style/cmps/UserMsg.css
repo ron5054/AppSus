@@ -1,13 +1,15 @@
 .user-msg {
+    display: flex;
+    align-items: center;
+    font-family: roboto;
+    font-size: 14px;
     position: fixed;
     bottom: 20px;
     left: 20px;
-
-    width: 290px;
-    color: aliceblue;
-    padding: 10px;
-    border-radius: 5px;
-    /* transition: opacity 1s; */
+    height: 50px;
+    color: white;
+    padding: 20px;
+    border-radius: 4px;
 }
 
 .user-msg.success {
@@ -15,5 +17,5 @@
 }
 
 .user-msg.error {
-    background-color: rgb(187, 104, 104);
+    background-color: rgb(182, 75, 75);
 }

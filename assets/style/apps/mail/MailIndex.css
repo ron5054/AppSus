@@ -1,13 +1,12 @@
 .mail-index {
-    height: 100dvh;
     font-family: roboto;
     font-size: 0.875em;
 }
 
 .mail-main-container {
-    display: flex;
-    height: 100dvh;
-    width: 100dvw;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 256px auto;
 }
 
 .cb-sb {
@@ -25,20 +24,28 @@
 }
 
 .mail-main-container .compose-btn {
+
     display: flex;
-    justify-content: center;
-    justify-content: space-between;
     margin-inline-start: 0.6em;
     margin-block-start: 1.1em;
-    padding: 1em;
+    padding: 0.8em;
     align-items: center;
     border: none;
     border-radius: 16px;
     background-color: var(--clr7);
-    font-weight: 400;
+    font-weight: 600;
+    color: #001d35;
+    font-size: 0.875rem;
     width: 142px;
     height: 56px;
+
     transition: box-shadow .08s linear, min-width .15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.compose-btn .material-symbols-outlined {
+    padding-right: 15px;
+    padding-left: 5px;
+
 }
 
 .mail-main-container .compose-btn:hover {

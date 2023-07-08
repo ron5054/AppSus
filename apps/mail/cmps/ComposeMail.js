@@ -8,14 +8,14 @@ export default {
             <form @submit.prevent="onSendMail" class="compose-mail">
                 <section>
                     <label for="to"></label>
-                    <input v-model="address" type="email" id="to" placeholder="to" required/>
+                    <input v-model="address" type="email" id="to" placeholder="Recipients" required/>
                 </section>
                 <section>
                 <label for="subject"></label>
                 <input v-model="subject" type="text" id="subject" placeholder="Subject"/>
                 </section>
                 <section>
-                <textarea class="mail-txt" v-model="body" placeholder="Write here"></textarea>
+                <textarea class="mail-txt" v-model="body"></textarea>
                 </section>
                 <section class="send-btn">
                 <button type="submit">Send</button>

@@ -1,22 +1,15 @@
  .mail-preview-container {
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
-     width: 100%;
+     display: grid;
+     grid-template-columns: 1fr auto;
  }
 
  .mail-attr {
-     display: flex;
-     width: 100%;
+     display: grid;
+     grid-template-columns: 1fr 6fr;
  }
 
  .mail-preview-container .date {
-     width: 4em;
- }
-
- .mail-sender {
-     width: 12.5em;
-     padding-right: 2em;
+     padding-right: 5px;
  }
 
  .mail-subject {
@@ -24,7 +17,6 @@
  }
 
  .mail-body {
-     width: 100em;
      color: var(--clr3);
      font-weight: 400;
  }

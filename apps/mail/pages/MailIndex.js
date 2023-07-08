@@ -20,12 +20,14 @@ export default {
 
                 <section>
                     <mailFilter @filter="setFilterBy"/>
-                    <a class="home-btn material-symbols-outlined" href="/">home</a>
+                    <!-- <a class="home-btn material-symbols-outlined" href="/">home</a> -->
                     <mailList
                      v-if="mails"
                      :mails="filteredmails"
                      @star="starMail"
+                     @important="importantMail"
                      @remove="trashMail"
+                     @toggleRead="toggleRead"
                      />
                 </section>
                 <ComposeMail @send="sendMail" @close="showCompose = false" v-if="showCompose"/>
@@ -38,7 +40,6 @@ export default {
             mails: null,
             filterBy: {},
             showCompose: false,
-            selectedMail: null
         }
     },
 
@@ -46,17 +47,32 @@ export default {
         toggleCompose() {
             this.showCompose = !this.showCompose
         },
-
-
+        // removeSelected(mailIdArray) {
+        //     mailIdArray.forEach(mailId => {
+        //         const mail = this.mails.find(mail => mail.id === mailId)
+        //         mailService.remove(mailId)
+        //             .then((res) => {
+        //                 const idx = this.mails.findIndex(mail => mail.id === mailId)
+        //                 this.mails.splice(idx, 1)
+        //                 showSuccessMsg('Mail deleted')
+        //             })
+        // else {
+        //     mail.isTrash = true
+        //     mail.isRead = true
+        //     mail.isInbox = false
+        //     mail.isSent = false
+        //     mailService.save(mail)
+        //         .then(showSuccessMsg('Mails moved to trash'))
+        //         .catch(err => showErrorMsg('Cannot move to trash'))
+        // }
+        //     })
+        // },
         removeMail(mailId) {
             mailService.remove(mailId)
                 .then((res) => {
-                    console.log(res);
                     const idx = this.mails.findIndex(mail => mail.id === mailId)
-                    console.log(this.mails);
                     this.mails.splice(idx, 1)
-                    console.log(this.mails);
-                    showSuccessMsg('mail deleted')
+                    showSuccessMsg('Mail deleted')
                 })
                 .catch(err => showErrorMsg('Cannot remove mail'))
 
@@ -66,11 +82,14 @@ export default {
             if (mail.isTrash) {
                 if (confirm('Are you sure you want to remove this mail?'))
                     this.removeMail(mailId)
+
             } else {
                 mail.isTrash = true
+                mail.isRead = true
                 mail.isInbox = false
+                mail.isSent = false
                 mailService.save({ ...mail })
-                    .then(showSuccessMsg('mail moved to trash'))
+                    .then(showSuccessMsg('Mail moved to trash'))
                     .catch(err => showErrorMsg('Cannot move to trash'))
             }
         },
@@ -78,6 +97,19 @@ export default {
             const mail = this.mails.find(mail => mail.id === mailId)
             mail.isStarred = !mail.isStarred
             mailService.save({ ...mail })
+                .catch(err => console.log(err))
+        },
+        toggleRead(mailId) {
+            const mail = this.mails.find(mail => mail.id === mailId)
+            mail.isRead = !mail.isRead
+            mailService.save({ ...mail })
+                .catch(err => console.log(err))
+        },
+        importantMail(mailId) {
+            const mail = this.mails.find(mail => mail.id === mailId)
+            mail.isImportant = !mail.isImportant
+            mailService.save({ ...mail })
+                .catch(err => console.log(err))
         },
         sendMail(mailToSend) {
             const mail = {
@@ -87,6 +119,7 @@ export default {
                 isInbox: false,
                 isRead: true,
                 isStarred: false,
+                isImportant: false,
                 isSent: true,
                 sentAt: Date.now(),
                 isTrash: false,
@@ -97,7 +130,7 @@ export default {
                 .then(savedmail => this.mails.push(savedmail))
                 .catch(err => alert('Message not sent'))
             this.showCompose = false
-            showSuccessMsg('mail sent')
+            showSuccessMsg('Mail sent')
         },
         setFilterBy(filterBy) {
             this.filterBy = filterBy
@@ -117,6 +150,8 @@ export default {
                 filteredmails = filteredmails.filter(mail => mail.isInbox)
             if (this.filterBy.tab === 'starred')
                 filteredmails = filteredmails.filter(mail => mail.isStarred)
+            if (this.filterBy.tab === 'important')
+                filteredmails = filteredmails.filter(mail => mail.isImportant)
             if (this.filterBy.tab === 'sent')
                 filteredmails = filteredmails.filter(mail => mail.isSent)
             if (this.filterBy.tab === 'trash')
@@ -137,6 +172,7 @@ export default {
     created() {
         mailService.query()
             .then(mails => this.mails = mails)
+            .catch(err => console.log(err))
     },
     components: {
         MailFilter,

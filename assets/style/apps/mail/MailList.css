@@ -1,53 +1,59 @@
  .mail-list {
-     /* width: 90dvw; */
      color: rgb(32, 33, 36);
      font-weight: 600;
      letter-spacing: 0.3px;
      -webkit-font-smoothing: antialiased;
+     border-radius: 30px 30px 0 0;
  }
 
  .mail-list ul {
      padding: 0;
  }
 
- .mail-list .mp-rm {
-     display: flex;
-     justify-content: space-between;
-     width: 100%;
+ .mp-rm {
+     display: grid;
+     grid-template-columns: 1fr auto;
+     align-items: center
  }
 
  .mail {
-     display: flex;
-     align-items: center;
+     display: grid;
+     grid-template-columns: 100px auto;
      padding-top: 10px;
      padding-bottom: 10px;
-     border-bottom: 1px solid lightgray;
+
      border-top: 1px solid lightgray;
  }
 
 
  .mail:hover {
      cursor: pointer;
-     border-bottom: 3px solid lightgray;
      transition: 0.5;
+     box-shadow: 0px 5px 5px -3px rgba(91, 91, 91, 0.45);
+     border: 1px solid lightgray;
  }
 
  .mail:hover .material-symbols-outlined {
      color: black;
  }
 
- .is-read {
+ .mail.is-read {
      font-weight: 400;
      background-color: var(--clr6)
  }
 
+ .mail.is-selected {
+     background-color: rgb(194, 219, 255);
+ }
+
  .mail-list .material-symbols-outlined:hover {
-     transform: scale(120%);
-     transition: 0.5;
+     transform: scale(130%);
+     transition: 0.3s ease-in-out;
 
  }
 
  .mail-list .material-symbols-outlined {
+     align-self: center;
      font-variation-settings:
          'FILL' 0,
          'wght' 400,
@@ -55,13 +61,33 @@
          'opsz' 48;
      color: lightgray;
      font-size: 1.4em;
-     padding-right: 1em;
+     padding-right: 13px;
  }
 
 
- .mail-list .material-symbols-outlined.is-starred {
+ .mail-list .material-symbols-outlined.is-starred,
+ .mail-list .material-symbols-outlined.is-important {
      font-variation-settings:
          'FILL' 1;
      color: gold;
      /* Gold color when starred */
+ }
+
+ .material-symbols-outlined.star-alined {
+     padding-bottom: 3px;
+ }
+
+ input.select-box {
+     margin-inline-start: 13px;
+     margin-inline-end: 16px;
+ }
+
+ .mail-list .remove-all {
+     padding-top: 10px;
+     display: flex;
+ }
+
+ .mail-controls {
+     display: flex;
+     align-items: center;
  }

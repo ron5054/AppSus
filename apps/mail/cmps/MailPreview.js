@@ -10,12 +10,12 @@ export default {
                 <section class="mail-subject">
                     <span> {{ mail.subject }} </span>
                     <span> - </span>
+                    <span class="mail-body"> {{ mail.body }} </span>
                 </section>
-                    <section class="mail-body"> {{ mail.body }} </section>
             </section>
 
             <section>
-                    <section class="date"> {{ formattedDate }} </section>
+                    <section class="date" v-if="!mail.isHovered"> {{ formattedDate }} </section>
             </section>        
         </article>   
     `,

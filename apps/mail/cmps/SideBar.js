@@ -19,6 +19,14 @@ export default {
               <span class="material-symbols-outlined">star</span>
               <span>Starred</span>
             </section>
+
+            <section
+              class="important folder"
+              :class="{ active: currentTab === 'important' }"
+              @click="onSetFilterBy('important')">
+              <span class="material-symbols-outlined">label</span>
+              <span>Important</span>
+            </section>
       
             <section
               class="sent folder"

@@ -1,3 +1,8 @@
+.mail-filter {
+    background-color: var(--clr6);
+}
+
+
 .mail-filter input {
     font-size: 1.2em;
     border: none;
@@ -8,7 +13,6 @@
 }
 
 .mail-filter label {
-    margin-block-start: 8px;
     display: flex;
     width: 720px;
     height: 48px;

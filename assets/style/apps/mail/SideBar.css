@@ -1,10 +1,10 @@
 .sidebar-container {
-    margin-block-start: 2em;
+    margin-block-start: 1em;
     width: 256px;
-    min-height: 100%;
     font-family: roboto;
     color: rgb(32, 33, 36);
     font-size: 1em;
+    height: 89dvh
 }
 
 .sidebar-container .material-symbols-outlined {

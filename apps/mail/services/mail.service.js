@@ -72,9 +72,9 @@ function generateMails(numMails) {
             isRead: false,
             isStarred: false,
             isSent: false,
-            sentAt: generateRandomTimestamp(),
+            sentAt: utilService.getRandomInt((Date.now() - 10000), Date.now()),
             isTrash: false,
-            from: generateRandomEmail(),
+            from: getRandomMail(),
             to: 'ron5054@gmail.com'
         }
 
@@ -84,18 +84,12 @@ function generateMails(numMails) {
     return mails
 }
 
-
-function generateRandomTimestamp() {
-    var randomTimestamp = Math.floor(Math.random() * (Date.now() - 0 + 1)) + 0
-    return randomTimestamp
-}
-
-function generateRandomEmail() {
-    const domains = ['gmail.com', 'yahoo.com', 'outlook.com', 'aol.com', 'hotmail.com']
-    const commonUsernames = ['john', 'emma', 'david', 'sarah', 'michael', 'laura', 'alex', 'jessica', 'chris', 'olivia']
+function getRandomMail() {
+    const domains = ['gmail.com', 'yahoo.com', 'outlook.com', 'aol.com', 'misterbit.co.il']
+    const commonUsernames = ['Tal Amit', 'Tal Liber', 'Adam Bercovich', 'Guy Kadosh', 'Eran Peled', 'Dvir Cohen', 'Dima Polonchuk', 'Shahar ron Zohar', 'Yaron Biton', 'Stav Yaar', 'Sharon Frenkel', 'Denis Lit']
     const randomDomain = domains[Math.floor(Math.random() * domains.length)]
     const randomUsername = commonUsernames[Math.floor(Math.random() * commonUsernames.length)]
-    const randomNumber = Math.floor(Math.random() * 100)
-    const randomEmail = `${randomUsername}${randomNumber}@${randomDomain}`
+    const randomEmail = `${randomUsername}`
     return randomEmail
 }
+
