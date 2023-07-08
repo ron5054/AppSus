@@ -5,7 +5,7 @@ import NoteAdd from './NoteAdd.js'
 
 import NoteFilter from '../cmps/NoteFilter.js'
 import NoteList from '../cmps/NoteList.js'
-import NoteEdit from '../pages/NoteEdit.js'
+// import NoteEdit from '../pages/NoteEdit.js'
 
 export default {
     name: 'NoteIndex',
@@ -16,6 +16,7 @@ export default {
             <header class="keep-main-header">
 
                 <span class="Home-btn material-symbols-outlined" @click="goToHomePage">home</span>
+
                 <div>
                     <img class="header-icon" src="../../assets/img/keep-icon.png"/>
                 </div>
@@ -23,6 +24,7 @@ export default {
                 <div class="header-logo">Keep</div>
 
                 <NoteFilter @filter="setFilterBy"></NoteFilter>
+
                 <!-- <NoteEdit v-if="editingNote" :note="editingNote" @save="saveEditedNote"></NoteEdit> -->
 
                 <div class="header-actions-bar"></div>
@@ -48,25 +50,23 @@ export default {
 
         </div>
 
-        <RouterView />
-
     `,
     data() {
         return {
             notes: [],
             filterBy: {},
             selectedColor: '',
-            editingNote: null,
+            // editingNote: null,
         }
     },
     methods: {
         editNote(note) {
-            this.editingNote = note;
+            // this.editingNote = note
         },
         saveEditedNote(editedNote) {
             const index = this.notes.findIndex(note => note.id === editedNote.id);
             if (index !== -1) {
-                this.notes[index] = editedNote;
+                this.notes[index] = editedNote
                 noteService.save(editedNote)
                     .then(() => {
                         showSuccessMsg('Note updated');
@@ -155,6 +155,6 @@ export default {
         NoteFilter,
         NoteList,
         NoteAdd,
-        NoteEdit,
+        // NoteEdit,
     },
 }

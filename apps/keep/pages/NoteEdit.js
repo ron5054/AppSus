@@ -5,21 +5,24 @@ export default {
     props: ['note'],
 
     template: `
-        <!-- <form @submit.prevent="save" class="edit-note">
+        <form @submit.prevent="save" class="edit-note">
 
-            <input v-if="note.type === 'NoteTxt'" v-model="noteToEdit.info.txt" type="text" placeholder="Edit Here">
+            <input v-model="noteToEdit.info.title" type="text" placeholder="Title">
 
-            <input v-if="note.type === 'NoteTodos'" v-model="noteToEdit.info.todos.txt" type="text" placeholder="Edit Here">
-            <input v-if="note.type === 'NoteTodos'" v-model="noteToEdit.info.todos.txt" type="text" placeholder="Edit Here">
-            <input v-if="note.type === 'NoteTodos'" v-model="noteToEdit.info.todos.txt" type="text" placeholder="Edit Here">
+            <input v-if="noteToEdit.type === 'NoteTxt'" v-model="noteToEdit.info.txt" type="text" placeholder="Edit Here">
 
 
-            <RouterLink to="/note">Cancel</RouterLink>
-            <button>save</button>
-        </form> -->
+
+            <input v-if="noteToEdit.type === 'NoteTodos'" v-model="noteToEdit.info.todos.txt" type="text" placeholder="Edit Here">
+            <input v-if="noteToEdit.type === 'NoteTodos'" v-model="noteToEdit.info.todos.txt" type="text" placeholder="Edit Here">
+            <input v-if="noteToEdit.type === 'NoteTodos'" v-model="noteToEdit.info.todos.txt" type="text" placeholder="Edit Here">
+
+
+            <button>Save</button>
+            <button @click="onCancel">Cancel</button>
+        </form>
 
     `,
-
     data() {
         return {
             noteToEdit: noteService.getEmptyNote(),
@@ -38,6 +41,9 @@ export default {
                 .catch(err => {
                     showErrorMsg('Cannot save note');
                 })
+        },
+        onCancel() {
+            this.$emit('cancelEdit')
         }
     },
 }

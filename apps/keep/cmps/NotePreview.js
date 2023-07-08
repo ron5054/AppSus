@@ -6,20 +6,15 @@ import NoteTodos from "./NoteTodos.js"
 export default {
     props: ['note'],
     template: `
-        <router-link :to="noteUrl">
-
-            <article class="note-preview" :class="{ pinned: note.isPinned }">
-                <component
-                :is="note.type"
-                :info="note.info"
-                />
-            </article>
-
-        </router-link>
+        <article class="note-preview" :class="{ pinned: note.isPinned }">
+            <component
+            :is="note.type"
+            :info="note.info"
+            />
+        </article>
     `,
     data() {
         return {
-            noteUrl: `/note/${this.note.id}`,
             noteStyle: ''
         }
     },
