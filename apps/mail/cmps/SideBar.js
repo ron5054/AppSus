@@ -43,6 +43,23 @@ export default {
               <span class="material-symbols-outlined">delete</span>
               <span>Trash</span>
             </section>
+
+            <section
+              class="unread folder"
+              :class="{ active: currentTab === 'unread' }"
+              @click="onSetFilterBy('unread')">
+              <span class="material-symbols-outlined">mark_email_unread</span>
+              <span>Unread</span>
+            </section>
+
+            <section
+              class="read folder"
+              :class="{ active: currentTab === 'read' }"
+              @click="onSetFilterBy('read')">
+              <span class="material-symbols-outlined">notification_multiple</span>
+              <span>Read</span>
+            </section>
+
           </section>
         `,
   data() {
@@ -64,4 +81,5 @@ export default {
       this.$router.push({ path: '/mail', query: { tab } })
     },
   },
-};
+}
+

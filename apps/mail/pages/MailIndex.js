@@ -159,6 +159,10 @@ export default {
                 filteredmails = filteredmails.filter(mail => mail.isSent)
             if (this.filterBy.tab === 'trash')
                 filteredmails = filteredmails.filter(mail => mail.isTrash)
+            if (this.filterBy.tab === 'read')
+                filteredmails = filteredmails.filter(mail => mail.isRead)
+            if (this.filterBy.tab === 'unread')
+                filteredmails = filteredmails.filter(mail => !mail.isRead)
             return filteredmails
         },
     },
