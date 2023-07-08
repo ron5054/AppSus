@@ -14,7 +14,6 @@ export default {
         <div class="keep-container">
             <header class="keep-main-header">
 
-                <!-- <div class="Home-btn" @click="goToHomePage">Home</div> -->
                 <span class="Home-btn material-symbols-outlined" @click="goToHomePage">home</span>
                 <div>
                     <img class="header-icon" src="../../assets/img/keep-icon.png"/>
@@ -32,11 +31,6 @@ export default {
                 <NoteAdd @noteAdded="save"></NoteAdd>
             </section>
 
-            <nav class="keep-aside-navbar">
-                <span class="material-symbols-outlined">emoji_objects</span>
-                <span class="material-symbols-outlined">notifications</span>
-                <span class="material-symbols-outlined">delete</span>
-            </nav>
             <div class="keep-main">
                 <NoteList
                     v-if="notes"
@@ -75,9 +69,7 @@ export default {
                 })
         },
         changeNoteColor(note, color) {
-            console.log('note', note)
-            console.log('color', color)
-            console.log('note.style', note.style)
+
             note.style.backgroundColor = color
 
             noteService.save(note)
@@ -116,7 +108,7 @@ export default {
     },
     computed: {
         sortedNotes() {
-            return this.notes.sort((a, b) => {
+            return this.notes.slice().sort((a, b) => {
                 if (a.isPinned && !b.isPinned) return -1
                 if (!a.isPinned && b.isPinned) return 1
                 return 0
