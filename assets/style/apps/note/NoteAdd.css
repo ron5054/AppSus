@@ -24,11 +24,16 @@
 
 .note-add-actions-bar {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    margin-block-end: 10px;
 }
 
 .note-add-actions-bar span {
     cursor: pointer;
     border-radius: 50%;
     font-size: 25px;
+}
+
+.note-add-actions-bar .file-type-btn {
+    font-family: 'Roboto';
 }

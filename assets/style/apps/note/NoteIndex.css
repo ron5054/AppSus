@@ -49,6 +49,10 @@
         flex-direction: column;
     }
 
+    .header-left-container {
+        margin-block-end: 20px;
+    }
+
     .keep-addnote-section {
         grid-area: 2 / 1 / 3 / 3;
     }

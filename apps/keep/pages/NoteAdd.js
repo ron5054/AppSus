@@ -9,10 +9,11 @@ export default {
                     <input v-model="noteToAdd.info.txt" type="text" placeholder="Take a note...">
 
                     <section class="note-add-actions-bar">
-
                             <div @click="save()">
                                 <span class="material-symbols-outlined">save</span>
                             </div>
+
+                            <span class="file-type-btn" @click="premiumOnly">Change Note Type</span>
                     </section>
             </form>
         </section>
@@ -32,6 +33,9 @@ export default {
         save() {
             this.$emit('noteAdded', { ...this.noteToAdd })
             this.noteToAdd = noteService.getEmptyNote()
+        },
+        premiumOnly() {
+            alert("Sorry, premium users only.")
         }
     }
 }
