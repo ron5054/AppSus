@@ -14,17 +14,12 @@
 }
 
 .cb-sb .logo {
-    margin-inline-start: 4.6em;
-    margin-block-start: 0.875em;
+    margin-block-start: 8px;
+    margin-inline-start: 4px;
 }
 
-.home-btn {
-    background-color: transparent;
-    border: none;
-}
 
 .mail-main-container .compose-btn {
-
     display: flex;
     margin-inline-start: 0.6em;
     margin-block-start: 1.1em;
@@ -50,4 +45,29 @@
 
 .mail-main-container .compose-btn:hover {
     box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.302), 0 4px 8px 3px rgba(60, 64, 67, 0.149);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container button {
+    margin-inline-start: 12px;
+    margin-block-start: 8px;
+    border-radius: 50%;
+    min-height: 48px;
+    min-width: 48px;
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 300,
+        'GRAD' 0,
+        'opsz' 48
+}
+
+.logo-container button:hover {
+    background-color: rgb(229, 229, 229);
 }
