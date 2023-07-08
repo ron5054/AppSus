@@ -5,7 +5,7 @@
 
  .mail-attr {
      display: grid;
-     grid-template-columns: 1fr 6fr;
+     grid-template-columns: 1fr 13fr;
  }
 
  .mail-preview-container .date {

@@ -13,7 +13,10 @@ export default {
         <section class="mail-index">
             <section class="mail-main-container">
                 <section class="cb-sb">
-                    <img class="logo" src="../../assets/img/gmail-logo.png" alt="" />
+                    <section class="logo-container">
+                        <button @click="goHome" class="material-symbols-outlined">menu</button>
+                        <img class="logo" src="../../assets/img/gmail-logo.png" alt="" />
+                    </section>
                     <button @click="toggleCompose" class="compose-btn"><span class="material-symbols-outlined">edit</span>Compose</button>
                     <SideBar @filter="setFilterBy" :mails="mails" />
                 </section>
@@ -44,6 +47,9 @@ export default {
     },
 
     methods: {
+        goHome() {
+            this.$router.push('/')
+        },
         toggleCompose() {
             this.showCompose = !this.showCompose
         },
@@ -53,7 +59,6 @@ export default {
                 const mail = this.mails.find(mail => mail.id === mailId)
                 if (mail.isTrash) {
                     this.removeMail(mailId)
-                    console.log('holy shit');
                 } else {
                     mail.isTrash = true
                     mail.isRead = true

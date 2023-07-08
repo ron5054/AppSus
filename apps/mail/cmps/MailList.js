@@ -77,7 +77,6 @@ export default {
                 }
             })
             this.checkedMails = checkedMailIds
-            console.log(this.checkedMails);
         },
         navigateTo(mailId) {
             this.$router.push('/mail/' + mailId)
