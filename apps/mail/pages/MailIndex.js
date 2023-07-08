@@ -34,7 +34,7 @@ export default {
                      />
                 </section>
                 <ComposeMail @send="sendMail" @close="showCompose = false" v-if="showCompose"/>
-                    
+
             </section>
         </section>
     `,

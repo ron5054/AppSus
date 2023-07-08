@@ -18,7 +18,7 @@ export default {
                 <span class="Home-btn material-symbols-outlined" @click="goToHomePage">home</span>
 
                 <div>
-                    <img class="header-icon" src="../../assets/img/keep-icon.png"/>
+                    <img class="header-icon" src="assets/img/keep-icon.png"/>
                 </div>
 
                 <div class="header-logo">Keep</div>
