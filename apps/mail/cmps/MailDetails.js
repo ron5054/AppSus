@@ -6,9 +6,9 @@ export default {
     template: `
         <section class="mail-details" v-if="mail">
             <h2> {{ mail.subject }} </h2>
-            <p> {{ mail.from }} </p>
-            <p> {{ mail.body }} </p>
-            <RouterLink to="/mail">Back to List</RouterLink>
+            <h3> {{ mail.from }} </h3>
+            <h5> {{ mail.body }} </h5>
+            <RouterLink to="/mail" class="close-btn">Back to list</RouterLink>
         </section>
     `,
     data() {

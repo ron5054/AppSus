@@ -1,5 +1,15 @@
 .mail-details {
     font-family: roboto;
-    font-weight: 400;
     padding-left: 2em;
+}
+
+.mail-details .close-btn {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+}
+
+.mail-details .close-btn:hover {
+    background-color: rgba(95, 99, 104, 0.039);
+    border-radius: 3px;
 }
