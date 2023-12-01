@@ -4,7 +4,7 @@ export default {
     template: `
         <article class="mail-preview-container">
             <section class="mail-icon">
-                <img :src="mail.senderImg">
+                <img :src="mail.senderImg" :alt="mail.from" />
             </section>
             <section class="mail-attr">
                 <section class="mail-sender">
@@ -37,6 +37,9 @@ export default {
                 const options = { month: 'short', day: 'numeric' }
                 return messageDate.toLocaleString('en-US', options)
             }
+        },
+        mailSenderImg() {
+            return this.mail.senderImg
         }
     }
 }  

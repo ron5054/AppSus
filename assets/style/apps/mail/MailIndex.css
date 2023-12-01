@@ -88,7 +88,7 @@
         z-index: 1;
         height: 100%;
         translate: -100% 0;
-        transition: translate 1s ease-in-out;
+        transition: translate .5s ease-in-out;
     }
 
     .into-view {
@@ -161,8 +161,8 @@
     }
 
     .new-mail {
-        height: 100vh !important;
-        width: 100vw !important;
+        height: 100% !important;
+        width: 100% !important;
         right: unset !important;
     }
 

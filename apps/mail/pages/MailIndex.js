@@ -181,6 +181,7 @@ export default {
         eventBus.on('sendMail', this.sendMail)
         const favicon = document.getElementById('favicon')
         favicon.href = 'assets/img/gmail.svg'
+        document.title = 'Gmail'
 
         mailService.query()
             .then(mails => this.mails = mails)

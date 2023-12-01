@@ -48,17 +48,12 @@ function _createmails() {
 }
 ///////////////////////////////////////////////////////////////////////////////////////////
 
-function getRandomMail() {
-    const domains = ['gmail.com', 'yahoo.com', 'outlook.com', 'aol.com', 'misterbit.co.il']
+function getRandomMail(randomNum) {
     const commonUsernames = ['Tal Amit', 'Tal Liber', 'Adam Bercovich', 'Guy Kadosh', 'Eran Peled', 'Dvir Cohen', 'Dima Polonchuk', 'Shahar ron Zohar', 'Yaron Biton', 'Stav Yaar', 'Sharon Frenkel', 'Denis Lit']
-    const randomDomain = domains[Math.floor(Math.random() * domains.length)]
-    const randomUsername = commonUsernames[Math.floor(Math.random() * commonUsernames.length)]
-    const randomEmail = `${randomUsername}`
-    return randomEmail
+    return commonUsernames[randomNum]
 }
 
-function getRandomPic() {
-    const randomNum = Math.floor(Math.random() * 10)
+function getRandomPic(randomNum) {
     return `https://randomuser.me/api/portraits/men/${randomNum}.jpg`
 }
 
@@ -79,6 +74,7 @@ function generateMails(numMails) {
     const mails = []
 
     for (var i = 0; i < numMails; i++) {
+        const randomNum = Math.floor(Math.random() * 12)
         const sentence1 = randomTxt[Math.floor(Math.random() * randomTxt.length)];
         const sentence2 = randomTxt[Math.floor(Math.random() * randomTxt.length)];
         const sentence3 = randomTxt[Math.floor(Math.random() * randomTxt.length)];
@@ -95,8 +91,8 @@ function generateMails(numMails) {
             isSent: false,
             sentAt: utilService.getRandomInt((Date.now() - 100000000), Date.now()),
             isTrash: false,
-            from: getRandomMail(),
-            senderImg: getRandomPic(),
+            from: getRandomMail(randomNum),
+            senderImg: getRandomPic(randomNum),
             to: 'ron5054@gmail.com'
         };
 

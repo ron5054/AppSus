@@ -79,6 +79,7 @@ export default {
     onSetFilterBy(tab) {
       this.currentTab = tab
       this.$router.push({ path: '/mail', query: { tab } })
+      document.querySelector('.cb-sb').classList.toggle('into-view')
     },
   },
 }
