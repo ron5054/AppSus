@@ -1,5 +1,5 @@
 import { mailService } from '../services/mail.service.js'
-import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.service.js'
+import { eventBus, showSuccessMsg, showErrorMsg } from '../../../services/event-bus.service.js'
 
 import MailFilter from '../cmps/MailFilter.js'
 import MailList from '../cmps/MailList.js'
@@ -20,10 +20,8 @@ export default {
                     <button @click="toggleCompose" class="compose-btn"><span class="material-symbols-outlined">edit</span>Compose</button>
                     <SideBar @filter="setFilterBy" :mails="mails" />
                 </section>
-
-                <section class="mf-ml">
-                    <mailFilter @filter="setFilterBy"/>
-                    <mailList
+                <mailFilter @filter="setFilterBy"/>
+                <mailList
                      v-if="mails"
                      :mails="filteredmails"
                      @star="starMail"
@@ -32,10 +30,10 @@ export default {
                      @toggleRead="toggleRead"
                      @removeSelected="removeSelected"
                      />
-                </section>
+                <router-view></router-view>
                 <ComposeMail @send="sendMail" @close="showCompose = false" v-if="showCompose"/>
-
-            </section>
+                </section>
+                <button v-if="this.$route.path !== '/mail/newmail'" class="compose-btn-mobile" @click="this.$router.push('/mail/newmail')"><span class="material-symbols-outlined">edit</span></button>
         </section>
     `,
     data() {
@@ -58,17 +56,19 @@ export default {
             mailIdArray.forEach(mailId => {
                 const mail = this.mails.find(mail => mail.id === mailId)
                 if (mail.isTrash) {
-                    this.removeMail(mailId)
+                    const idx = this.mails.findIndex(mail => mail.id === mailId)
+                    this.mails.splice(idx, 1)
                 } else {
                     mail.isTrash = true
                     mail.isRead = true
                     mail.isInbox = false
                     mail.isSent = false
-                    mailService.save(mail)
-                        .then(showSuccessMsg('Mails moved to trash'))
-                        .catch(err => showErrorMsg('Cannot move to trash'))
+                    mail.isSelected = false
                 }
             })
+
+            document.querySelector('.select-box').checked = false
+            mailService.saveMails(this.mails)
         },
         removeMail(mailId) {
             mailService.remove(mailId)
@@ -127,7 +127,8 @@ export default {
                 sentAt: Date.now(),
                 isTrash: false,
                 from: 'ron5054@gmail.com',
-                to: mailToSend.address
+                to: mailToSend.address,
+                senderImg: 'https://randomuser.me/api/portraits/men/22.jpg'
             }
             mailService.save(mail)
                 .then(savedmail => this.mails.push(savedmail))
@@ -177,9 +178,14 @@ export default {
         },
     },
     created() {
+        eventBus.on('sendMail', this.sendMail)
+        const favicon = document.getElementById('favicon')
+        favicon.href = 'assets/img/gmail.svg'
+
         mailService.query()
             .then(mails => this.mails = mails)
             .catch(err => console.log(err))
+
     },
     components: {
         MailFilter,

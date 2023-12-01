@@ -4,13 +4,12 @@
 
 body {
   margin: 0;
-  color: var(--clr4);
 }
 
 /* Bug Fix */
 html,
 body {
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 /* h1,

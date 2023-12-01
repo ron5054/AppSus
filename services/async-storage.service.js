@@ -4,6 +4,7 @@ export const storageService = {
     post,
     put,
     remove,
+    _save,
 }
 
 function query(entityType, delay = 500) {
@@ -27,7 +28,7 @@ function post(entityType, newEntity, append = true) {
         return newEntity
     })
 }
-
+let x = 0
 function put(entityType, updatedEntity) {
     return query(entityType).then(entities => {
         const idx = entities.findIndex(entity => entity.id === updatedEntity.id)
@@ -44,8 +45,6 @@ function remove(entityType, entityId) {
         _save(entityType, entities)
     })
 }
-
-// Private functions
 
 function _save(entityType, entities) {
     localStorage.setItem(entityType, JSON.stringify(entities))

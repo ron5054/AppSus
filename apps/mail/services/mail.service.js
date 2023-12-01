@@ -10,6 +10,7 @@ export const mailService = {
     get,
     remove,
     save,
+    saveMails,
 }
 window.mailService = mailService
 
@@ -34,6 +35,10 @@ function save(mail) {
     }
 }
 
+function saveMails(mails) {
+    return storageService._save(MAIL_KEY, mails)
+}
+
 function _createmails() {
     let mails = utilService.loadFromStorage(MAIL_KEY)
     if (!mails || !mails.length) {
@@ -50,6 +55,11 @@ function getRandomMail() {
     const randomUsername = commonUsernames[Math.floor(Math.random() * commonUsernames.length)]
     const randomEmail = `${randomUsername}`
     return randomEmail
+}
+
+function getRandomPic() {
+    const randomNum = Math.floor(Math.random() * 10)
+    return `https://randomuser.me/api/portraits/men/${randomNum}.jpg`
 }
 
 function generateMails(numMails) {
@@ -86,6 +96,7 @@ function generateMails(numMails) {
             sentAt: utilService.getRandomInt((Date.now() - 100000000), Date.now()),
             isTrash: false,
             from: getRandomMail(),
+            senderImg: getRandomPic(),
             to: 'ron5054@gmail.com'
         };
 

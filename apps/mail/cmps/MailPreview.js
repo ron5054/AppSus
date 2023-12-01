@@ -3,13 +3,16 @@ export default {
     props: ['mail'],
     template: `
         <article class="mail-preview-container">
+            <section class="mail-icon">
+                <img :src="mail.senderImg">
+            </section>
             <section class="mail-attr">
                 <section class="mail-sender">
                     <span> {{ mail.from }} </span>
                 </section>
                 <section class="mail-subject">
                     <span> {{ mail.subject }} </span>
-                    <span> - </span>
+                    <span class="mail-hyphen"> - </span>
                     <span class="mail-body"> {{ mail.body }} </span>
                 </section>
             </section>

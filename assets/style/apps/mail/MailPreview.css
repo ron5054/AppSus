@@ -3,9 +3,19 @@
      grid-template-columns: 1fr auto;
  }
 
+ .mail-icon {
+     display: none;
+ }
+
+ .mail-icon img {
+     border-radius: 50%;
+     width: 40px;
+     height: 40px;
+ }
+
  .mail-attr {
      display: grid;
-     grid-template-columns: 1fr 13fr;
+     grid-template-columns: 200px 1fr;
  }
 
  .mail-preview-container .date {
@@ -14,6 +24,11 @@
 
  .mail-subject {
      padding-right: 5px;
+     overflow: hidden;
+     display: -webkit-box;
+     -webkit-box-orient: vertical;
+     -webkit-line-clamp: 1;
+     white-space: pre-wrap;
  }
 
  .mail-body {

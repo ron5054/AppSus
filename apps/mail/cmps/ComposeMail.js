@@ -1,3 +1,5 @@
+import { eventBus } from "../../../services/event-bus.service.js"
+
 export default {
     template: `
         <section class="new-mail">
@@ -32,11 +34,13 @@ export default {
     },
     methods: {
         onSendMail() {
-            this.$emit('send', { address: this.address, subject: this.subject, body: this.body })
+            if (window.innerWidth < 890) this.$router.push('/mail')
+            eventBus.emit('sendMail', { address: this.address, subject: this.subject, body: this.body })
+            // this.$emit('send', { address: this.address, subject: this.subject, body: this.body })
         },
         onClose() {
+            if (window.innerWidth < 890) this.$router.push('/mail')
             this.$emit('close')
         }
-
     }
 }

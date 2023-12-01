@@ -12,7 +12,7 @@ export default {
                     placeholder="Search mail">
                 <span class="material-symbols-outlined search-clear" @click="onClearFilter"> close </span>
             </label>
-            <button class="user-btn" title="Google Account\nyaron levy\nron5054@gmail.com">y</button>
+            <button @click="openSideBar" class="user-btn" title="Google Account\nyaron levy\nron5054@gmail.com">y</button>
         </section>
     `,
     data() {
@@ -28,6 +28,9 @@ export default {
         },
         onClearFilter() {
             this.filterBy.txt = ''
+        },
+        openSideBar() {
+            document.querySelector('.cb-sb').classList.toggle('into-view')
         }
     }
 

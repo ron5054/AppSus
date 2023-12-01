@@ -5,7 +5,7 @@ export default {
     props: ['mails'],
     template: `
     
-       <section class="mail-list">
+        <section class="mail-list" v-if="showMailList">
             <section class="remove-all">
                 <input @click="onSelectAll" title="Select All" class="select-box" type="checkbox"/>
                 <span @click="onRemoveSelected" title="Delete selected" class="material-symbols-outlined delete">delete</span>
@@ -40,6 +40,11 @@ export default {
             checkedMails: null
         }
     },
+    computed: {
+        showMailList() {
+            return !(this.$route.params.mailId || this.$route.path === '/mail/newmail')
+        }
+    },
     methods: {
         onRemoveMail(mailId) {
             this.$emit('remove', mailId)
@@ -65,8 +70,6 @@ export default {
                 this.checkedMails.splice(index, 1)
             }
         },
-
-
         onSelectAll() {
             this.mails.forEach(mail => mail.isSelected = !mail.isSelected)
 

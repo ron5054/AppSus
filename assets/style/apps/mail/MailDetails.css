@@ -1,6 +1,30 @@
 .mail-details {
     font-family: roboto;
-    padding-left: 2em;
+    background-color: var(--clr1);
+    border-radius: 1rem;
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.mail-details h2 {
+    margin: 0;
+    padding: 20px 0 8px 72px;
+}
+
+.mail-details h3 {
+    margin: 0;
+}
+
+.wrapper {
+    display: flex;
+    padding: 20px 20px 0 0;
+}
+
+.sender-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-inline: 16px;
 }
 
 .mail-details .close-btn {

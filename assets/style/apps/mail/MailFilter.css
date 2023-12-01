@@ -5,13 +5,14 @@
     justify-content: center;
     justify-content: space-between;
     width: 100%;
-    background-color: var(--clr6);
+    grid-column: 2;
+    grid-row: 1;
 }
 
 .mail-filter input {
     font-size: 1.2em;
     border: none;
-    width: 720px;
+    width: 100%;
     height: 48px;
     outline: none;
     background-color: var(--clr9);
@@ -29,7 +30,6 @@
 }
 
 .user-btn {
-    margin-inline-end: 10px;
     padding-bottom: 5px;
     font-size: large;
     border: none;

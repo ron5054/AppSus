@@ -1,13 +1,19 @@
  .mail-list {
+     position: relative;
      color: rgb(32, 33, 36);
      font-weight: 600;
      letter-spacing: 0.3px;
      -webkit-font-smoothing: antialiased;
-     border-radius: 30px 30px 0 0;
+     border-radius: 16px;
+     background-color: var(--clr1);
+     overflow: auto;
+     grid-column: 2;
+     grid-row: 2;
  }
 
  .mail-list ul {
      padding: 0;
+     margin-block-start: 40px;
  }
 
  .mp-rm {
@@ -21,7 +27,6 @@
      grid-template-columns: 100px auto;
      padding-top: 10px;
      padding-bottom: 10px;
-
      border-top: 1px solid lightgray;
  }
 
@@ -85,8 +90,15 @@
  }
 
  .mail-list .remove-all {
+     position: fixed;
+     background-color: var(--clr1);
+     border-top-left-radius: 1rem;
+     border-top-right-radius: 1rem;
+     padding-block: 10px;
+     width: 100%;
      padding-top: 10px;
      display: flex;
+     grid-column: 2;
  }
 
  .mail-controls {

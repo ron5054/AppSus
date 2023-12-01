@@ -6,18 +6,16 @@
 .mail-main-container {
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: 256px auto;
-}
-
-.cb-sb {
-    background-color: var(--clr6);
+    grid-template-columns: 256px 1fr 16px;
+    grid-template-rows: 60px 1fr 16px;
+    height: 100vh;
+    background-color: rgb(242, 246, 252);
 }
 
 .cb-sb .logo {
     margin-block-start: 8px;
     margin-inline-start: 4px;
 }
-
 
 .mail-main-container .compose-btn {
     display: flex;
@@ -70,4 +68,101 @@
 
 .logo-container button:hover {
     background-color: rgb(229, 229, 229);
+}
+
+.compose-btn-mobile {
+    display: none;
+    border: none;
+    border-radius: .5rem;
+    padding: 1rem;
+    position: fixed;
+    bottom: 20px;
+    right: 20px
+}
+
+@media (max-width: 890px) {
+
+    .cb-sb {
+        background-color: var(--clr1);
+        position: fixed;
+        z-index: 1;
+        height: 100%;
+        translate: -100% 0;
+        transition: translate 1s ease-in-out;
+    }
+
+    .into-view {
+        translate: unset;
+    }
+
+    .mail,
+    .mail-attr,
+    .mail-main-container {
+        grid-template-columns: unset !important;
+        display: unset;
+    }
+
+    .mail .mail-controls {
+        display: none;
+    }
+
+    .mail .mail-icon {
+        display: block;
+        padding-inline: .5rem;
+    }
+
+    .mail-preview-container {
+        grid-template-columns: auto 1fr auto !important;
+    }
+
+    .mail-hyphen {
+        display: none !important;
+    }
+
+    .mail-search {
+        width: unset !important;
+    }
+
+    .mail-filter {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        background-color: unset;
+    }
+
+    .mail-body {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        white-space: pre-wrap;
+    }
+
+    .mail-details,
+    .mail-list {
+        margin-inline-end: unset !important;
+        border-radius: unset !important;
+    }
+
+    .mail-filter label {
+        margin-inline-start: .5rem;
+    }
+
+    .remove-all {
+        border-top-left-radius: unset !important;
+        border-top-right-radius: unset !important;
+    }
+
+    .user-btn {
+        margin-inline: 16px;
+    }
+
+    .compose-btn-mobile {
+        display: flex;
+    }
+
+    .new-mail {
+        height: 100vh !important;
+        width: 100vw !important;
+        right: unset !important;
+    }
 }
