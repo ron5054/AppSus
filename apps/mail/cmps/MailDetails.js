@@ -7,7 +7,7 @@ export default {
         <section class="mail-details" v-if="mail">
             <h2> {{ mail.subject }} </h2>
             <section class="wrapper">
-                <img class="sender-img" :src="mail.senderImg" alt="mail logo">
+                <img class="sender-img" v-bind:src="mail.senderImg" alt="mail logo">
                 <div class="sender-info">
                     <h3> {{ mail.from }} </h3>
                     <h5> {{ mail.body }} </h5>

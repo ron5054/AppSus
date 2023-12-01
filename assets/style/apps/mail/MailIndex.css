@@ -99,7 +99,6 @@
     .mail-attr,
     .mail-main-container {
         grid-template-columns: unset !important;
-        display: unset;
     }
 
     .mail .mail-controls {
@@ -137,6 +136,7 @@
         white-space: pre-wrap;
     }
 
+
     .mail-details,
     .mail-list {
         margin-inline-end: unset !important;
@@ -164,5 +164,12 @@
         height: 100vh !important;
         width: 100vw !important;
         right: unset !important;
+    }
+
+    .mail-list,
+    .mail-filter,
+    .mail-details {
+        grid-row: unset !important;
+        grid-column: unset !important;
     }
 }
